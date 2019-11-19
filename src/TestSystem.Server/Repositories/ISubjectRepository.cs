@@ -3,7 +3,7 @@ using TestSystem.Common;
 
 namespace WebApiServer.Repositories
 {
-    interface ISubjectRepository
+    public interface ISubjectRepository
     {
         IEnumerable<Subject> Get();
         Subject Get(int id);

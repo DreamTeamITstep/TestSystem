@@ -3,7 +3,7 @@ using TestSystem.Common;
 
 namespace WebApiServer.Repositories
 {
-    interface IStudentsRepository
+    public interface IStudentsRepository
     {
         IEnumerable<Student> Get();
         Student Get(int id);
