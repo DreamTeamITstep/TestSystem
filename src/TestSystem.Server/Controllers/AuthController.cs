@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TestSystem.Common;
-using WebApiServer.Services;
+using TestSystem.Server.Services;
 
-namespace WebApiServer.Controllers
+namespace TestSystem.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]

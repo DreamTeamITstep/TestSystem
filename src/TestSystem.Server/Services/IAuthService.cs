@@ -7,7 +7,7 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using TestSystem.Common;
 
-namespace WebApiServer.Services
+namespace TestSystem.Server.Services
 {
     public interface IAuthService
     {

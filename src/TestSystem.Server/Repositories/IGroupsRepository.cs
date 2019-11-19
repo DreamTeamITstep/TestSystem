@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TestSystem.Common;
 
-namespace WebApiServer.Repositories
+namespace TestSystem.Server.Repositories
 {
     public interface IGroupsRepository
     {
