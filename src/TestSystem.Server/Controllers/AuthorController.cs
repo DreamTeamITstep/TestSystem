@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using TestSystem.Common;
@@ -17,6 +18,7 @@ namespace WebApiServer.Controllers
             _authorsRepository = authorsRepository;
         }
 
+        [Authorize]
         [HttpGet]
         public IEnumerable<Author> Get()
         {

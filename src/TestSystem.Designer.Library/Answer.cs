@@ -1,21 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TestLibrary
+namespace TestSystem.Designer.Library
 {
     [Serializable]
     public class Answer
     {
         public string Text { get; set; }
         public bool Correct { get; set; } = false;
-        //public Answer() { }
-        //public Answer(string text = "", bool correct = false)
-        //{ 
-        //    Text = text;
-        //    Correct = correct; 
-        //}
     }
 }

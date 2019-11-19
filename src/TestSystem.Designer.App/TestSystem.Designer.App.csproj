@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5732254A-58D0-4870-8C9F-64EA92E941E8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TestDesigner</RootNamespace>
-    <AssemblyName>TestDesigner</AssemblyName>
+    <RootNamespace>TestSystem.Designer.App</RootNamespace>
+    <AssemblyName>TestSystem.Designer.App</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

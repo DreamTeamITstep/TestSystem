@@ -1,4 +1,4 @@
-﻿namespace TestDesigner
+﻿namespace TestSystem.Designer.App
 {
     partial class FormDesigner
     {
@@ -51,7 +51,7 @@
             this.label_Answers = new System.Windows.Forms.Label();
             this.button_PreviousAnswer = new System.Windows.Forms.Button();
             this.button_AddAnswer = new System.Windows.Forms.Button();
-            this.radioListBox_Answers = new System.Windows.Forms.RadioListBox();
+            this.radioListBox_Answers = new TestSystem.Designer.App.RadioListBox();
             this.textBox_Answer = new System.Windows.Forms.TextBox();
             this.label_Questions = new System.Windows.Forms.Label();
             this.button_AddQuestion = new System.Windows.Forms.Button();
@@ -121,6 +121,7 @@
             // 
             // toolStripTextBox_TestName
             // 
+            this.toolStripTextBox_TestName.BackColor = System.Drawing.Color.Gray;
             this.toolStripTextBox_TestName.Name = "toolStripTextBox_TestName";
             this.toolStripTextBox_TestName.Size = new System.Drawing.Size(100, 23);
             this.toolStripTextBox_TestName.TextChanged += new System.EventHandler(this.toolStripTextBox_TestName_TextChanged);
@@ -339,12 +340,12 @@
             // 
             this.label_Answers.AutoSize = true;
             this.label_Answers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_Answers.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Answers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_Answers.Location = new System.Drawing.Point(369, 90);
             this.label_Answers.Name = "label_Answers";
             this.label_Answers.Size = new System.Drawing.Size(55, 31);
             this.label_Answers.TabIndex = 10;
-            this.label_Answers.Text = "0/0";
+            this.label_Answers.Text = "Answers\r\n0/0";
             this.label_Answers.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button_PreviousAnswer
@@ -402,37 +403,37 @@
             // 
             this.label_Questions.AutoSize = true;
             this.label_Questions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_Questions.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Questions.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_Questions.Location = new System.Drawing.Point(209, 265);
             this.label_Questions.Name = "label_Questions";
             this.label_Questions.Size = new System.Drawing.Size(97, 57);
             this.label_Questions.TabIndex = 8;
-            this.label_Questions.Text = "0/0";
+            this.label_Questions.Text = "Questions\r\n0/0";
             this.label_Questions.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button_AddQuestion
             // 
             this.button_AddQuestion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_AddQuestion.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_AddQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_AddQuestion.Location = new System.Drawing.Point(113, 272);
             this.button_AddQuestion.Margin = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.button_AddQuestion.Name = "button_AddQuestion";
             this.button_AddQuestion.Size = new System.Drawing.Size(83, 43);
             this.button_AddQuestion.TabIndex = 7;
-            this.button_AddQuestion.Text = "Add";
+            this.button_AddQuestion.Text = "Add\r\nquestion";
             this.button_AddQuestion.UseVisualStyleBackColor = true;
             this.button_AddQuestion.Click += new System.EventHandler(this.button_AddQuestion_Click);
             // 
             // button_DeleteQuestion
             // 
             this.button_DeleteQuestion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_DeleteQuestion.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_DeleteQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.button_DeleteQuestion.Location = new System.Drawing.Point(319, 272);
             this.button_DeleteQuestion.Margin = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.button_DeleteQuestion.Name = "button_DeleteQuestion";
             this.button_DeleteQuestion.Size = new System.Drawing.Size(83, 43);
             this.button_DeleteQuestion.TabIndex = 6;
-            this.button_DeleteQuestion.Text = "Delete";
+            this.button_DeleteQuestion.Text = "Delete\r\nquestion";
             this.button_DeleteQuestion.UseVisualStyleBackColor = true;
             this.button_DeleteQuestion.Click += new System.EventHandler(this.button_DeleteQuestion_Click);
             // 
@@ -551,7 +552,7 @@
         private System.Windows.Forms.Label label_Answers;
         private System.Windows.Forms.Button button_PreviousAnswer;
         private System.Windows.Forms.Button button_AddAnswer;
-        private System.Windows.Forms.RadioListBox radioListBox_Answers;
+        private RadioListBox radioListBox_Answers;
         private System.Windows.Forms.TextBox textBox_Answer;
         private System.Windows.Forms.Label label_Questions;
         private System.Windows.Forms.Button button_AddQuestion;
