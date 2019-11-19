@@ -7,7 +7,7 @@
     <ProjectGuid>{FCB9EE90-C78D-45C9-AD5F-A65158D31FEB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestLibrary</RootNamespace>
+    <RootNamespace>TestSystem.Designer.Library</RootNamespace>
     <AssemblyName>TestSystem.Designer.Library</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

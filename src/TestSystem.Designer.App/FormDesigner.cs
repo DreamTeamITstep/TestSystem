@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Serialization;
-using TestLibrary;
+﻿using TestSystem.Designer.Library;
 
-namespace TestDesigner
+namespace TestSystem.Designer.App
 {
     public partial class FormDesigner : Form
     {
@@ -25,7 +14,16 @@ namespace TestDesigner
         public FormDesigner()
         {
             InitializeComponent();
-            currentTest = new Test();
+            for (int i = 1; i < 100; i++)
+            {
+                if (File.Exists($"NewTest{i}.xml")) continue;
+                else
+                {
+                    currentTest = new Test() { Name = $"NewTest{i}.xml" };
+                    break;
+                }
+
+            }
             this.Text = $"Test designer: {currentTest.Name}";
             toolStripTextBox_TestName.Text = currentTest.Name;
         }
@@ -61,12 +59,11 @@ namespace TestDesigner
             if (currentQuestion.Answers.Count > 0)
             {
                 currentAnswer = currentQuestion.Answers[indexAnswer];
-                for(int i = 0; i < currentQuestion.Answers.Count; i++)
+                for (int i = 0; i < currentQuestion.Answers.Count; i++)
                 {
                     radioListBox_Answers.Items.Add(currentQuestion.Answers[i].Text);
                     if (currentQuestion.Answers[i].Correct) radioListBox_Answers.SelectedIndex = i;
                 }
-                    
                 textBox_Answer.Text = currentQuestion.Answers[indexAnswer].Text;
                 label_Answers.Text = $"{++indexAnswer + 1}/{countAnswers}";
             }
@@ -137,7 +134,7 @@ namespace TestDesigner
             }
             currentQuestion = currentTest.Questions[indexQuestion];
             countAnswers = currentQuestion.Answers.Count;
-            indexAnswer = -1;
+            indexAnswer = 0;
             if (currentQuestion.Answers.Count > 0)
             {
                 currentAnswer = currentQuestion.Answers[indexAnswer];
@@ -147,7 +144,7 @@ namespace TestDesigner
                     if (currentQuestion.Answers[i].Correct) radioListBox_Answers.SelectedIndex = i;
                 }
                 textBox_Answer.Text = currentQuestion.Answers[indexAnswer].Text;
-                label_Answers.Text = $"{++indexAnswer + 1}/{countAnswers}";
+                label_Answers.Text = $"{indexAnswer + 1}/{countAnswers}";
             }
             else
             {
@@ -223,8 +220,8 @@ namespace TestDesigner
             currentTest.Theme = textBox_Theme.Text;
             currentTest.Author = textBox_Author.Text;
             XmlSerializer formatter = new XmlSerializer(typeof(Test));
-
-            using (FileStream fs = new FileStream($"{toolStripTextBox_TestName.Text}", FileMode.OpenOrCreate))
+            File.Delete($"{ toolStripTextBox_TestName.Text}");
+            using (FileStream fs = new FileStream($"{toolStripTextBox_TestName.Text}", FileMode.CreateNew))
             {
                 formatter.Serialize(fs, currentTest);
             }
@@ -240,20 +237,20 @@ namespace TestDesigner
         {
             if (currentTest.Questions.Count > 0)
             {
-                MessageBox.Show("Do you want save current test?", "Current project isn't empty", MessageBoxButtons.YesNoCancel);
-                if(DialogResult == DialogResult.Yes)
+                DialogResult res = MessageBox.Show("Do you want save current test?", "Current project isn't empty", MessageBoxButtons.YesNoCancel);
+                if(res == DialogResult.Yes)
                 {
                     currentTest.Subject = textBox_Subject.Text;
                     currentTest.Theme = textBox_Theme.Text;
                     currentTest.Author = textBox_Author.Text;
                     XmlSerializer formatter = new XmlSerializer(typeof(Test));
-
-                    using (FileStream fs = new FileStream($"{toolStripTextBox_TestName.Text}", FileMode.OpenOrCreate))
+                    File.Delete($"{ toolStripTextBox_TestName.Text}");
+                    using (FileStream fs = new FileStream($"{toolStripTextBox_TestName.Text}", FileMode.CreateNew))
                     {
                         formatter.Serialize(fs, currentTest);
                     }
                 }
-                if(DialogResult == DialogResult.Cancel)
+                if(res == DialogResult.Cancel)
                 {
                     return;
                 }
@@ -263,13 +260,27 @@ namespace TestDesigner
                 if (File.Exists($"NewTest{i}.xml")) continue;
                 else
                 {
-                    currentTest = new Test();
+                    currentTest = new Test() { Name = $"NewTest{i}.xml" };
                     break;
                 }
 
             }
             this.Text = $"Test designer: {currentTest.Name}";
             toolStripTextBox_TestName.Text = currentTest.Name;
+            indexAnswer = -1;
+            indexQuestion = -1;
+            currentQuestion = null;
+            currentAnswer = null;
+            countAnswers = 0;
+            countQuestions = 0;
+            radioListBox_Answers.Items.Clear();
+            textBox_Author.Clear();
+            textBox_Subject.Clear();
+            textBox_Theme.Clear();
+            textBox_Question.Clear();
+            textBox_Answer.Clear();
+            label_Answers.Text = $"{indexAnswer + 1}/{countAnswers}";
+            label_Questions.Text = $"{indexQuestion + 1}/{countQuestions}";
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -277,20 +288,20 @@ namespace TestDesigner
             XmlSerializer formatter = new XmlSerializer(typeof(Test));
             if (currentTest.Questions.Count > 0)
             {
-                MessageBox.Show("Do you want save current test?", "Current project isn't empty", MessageBoxButtons.YesNoCancel);
-                if (DialogResult == DialogResult.Yes)
+                DialogResult res = MessageBox.Show("Do you want save current test?", "Current project isn't empty", MessageBoxButtons.YesNoCancel);
+                if (res == DialogResult.Yes)
                 {
                     currentTest.Subject = textBox_Subject.Text;
                     currentTest.Theme = textBox_Theme.Text;
                     currentTest.Author = textBox_Author.Text;
                    
-
-                    using (FileStream fs = new FileStream($"{toolStripTextBox_TestName.Text}", FileMode.OpenOrCreate))
+                    File.Delete($"{ toolStripTextBox_TestName.Text}");
+                    using (FileStream fs = new FileStream($"{toolStripTextBox_TestName.Text}", FileMode.CreateNew))
                     {
                         formatter.Serialize(fs, currentTest);
                     }
                 }
-                if (DialogResult == DialogResult.Cancel)
+                if (res == DialogResult.Cancel)
                 {
                     return;
                 }
@@ -302,21 +313,27 @@ namespace TestDesigner
                 {
                     currentTest = (Test)formatter.Deserialize(fs);
                 };
-                currentQuestion = currentTest.Questions[0];
-                currentAnswer = currentTest.Questions[0].Answers[0];
                 indexAnswer = 0;
                 indexQuestion = 0;
-                countAnswers = currentTest.Questions[0].Answers.Count;
+                currentQuestion = currentTest.Questions[indexQuestion];
+                currentAnswer = currentTest.Questions[indexQuestion].Answers[indexAnswer];
+                countAnswers = currentTest.Questions[indexQuestion].Answers.Count;
                 countQuestions = currentTest.Questions.Count;
-                foreach (var i in currentQuestion.Answers)
-                    radioListBox_Answers.Items.Add(i.Text);
+                radioListBox_Answers.Items.Clear();
+                for (int i = 0; i < currentQuestion.Answers.Count; i++)
+                {
+                    radioListBox_Answers.Items.Add(currentQuestion.Answers[i].Text);
+                    if (currentQuestion.Answers[i].Correct) radioListBox_Answers.SelectedIndex = i;
+                }
                 textBox_Author.Text = currentTest.Author;
                 textBox_Subject.Text = currentTest.Subject;
                 textBox_Theme.Text = currentTest.Theme;
                 textBox_Question.Text = currentQuestion.Text;
                 textBox_Answer.Text = currentAnswer.Text;
-                radioListBox_Answers.Items.Clear();
-                
+                label_Answers.Text = $"{indexAnswer + 1}/{countAnswers}";
+                label_Questions.Text = $"{indexQuestion + 1}/{countQuestions}";
+                this.Text = $"Test designer: {currentTest.Name}";
+                toolStripTextBox_TestName.Text = currentTest.Name;
             }
         }
     }
