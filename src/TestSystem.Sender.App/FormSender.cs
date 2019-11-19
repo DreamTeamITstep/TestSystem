@@ -38,7 +38,11 @@ namespace TestSystem.Sender.App
 
         private void button_SendOnServer_Click(object sender, EventArgs e)
         {
-            
+            var client = new RestClient("http://localhost:5000/Test");
+            var request = new RestRequest("auth / login", Method.POST);
+            request.AddHeader("Authentication", $"Bearer {token}");
+            request.AddHeader("Content - Type", "application / json");
+            //var response = client.Execute<Test>(request);
         }
     }
 }
