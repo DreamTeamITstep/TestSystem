@@ -6,10 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using WebApiServer.Repositories;
-using WebApiServer.Services;
+using TestSystem.Server.Repositories;
+using TestSystem.Server.Services;
 
-namespace WebApiServer
+namespace TestSystem.Server
 {
     public class Startup
     {

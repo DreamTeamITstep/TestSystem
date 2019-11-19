@@ -11,6 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C99A7A5C-559
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSystem.Common", "src\TestSystem.Common\TestSystem.Common.csproj", "{0850FF23-3A25-46E2-82FC-2A84DFF8EC2E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{7BE2D26E-AFF5-41FB-A021-A336525EF2CA}"
+ProjectSection(SolutionItems) = preProject
+	src\TestSystem.Server\Dockerfile = src\TestSystem.Server\Dockerfile
+	docker-compose.yml = docker-compose.yml
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
