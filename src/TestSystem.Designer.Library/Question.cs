@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TestLibrary
+﻿namespace TestSystem.Designer.Library
 {
     [Serializable]
     public class Question

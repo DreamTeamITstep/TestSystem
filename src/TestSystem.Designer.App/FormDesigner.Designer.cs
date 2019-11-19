@@ -1,4 +1,4 @@
-﻿namespace TestDesigner
+﻿namespace TestSystem.Designer.App
 {
     partial class FormDesigner
     {
@@ -51,7 +51,7 @@
             this.label_Answers = new System.Windows.Forms.Label();
             this.button_PreviousAnswer = new System.Windows.Forms.Button();
             this.button_AddAnswer = new System.Windows.Forms.Button();
-            this.radioListBox_Answers = new System.Windows.Forms.RadioListBox();
+            this.radioListBox_Answers = new RadioListBox();
             this.textBox_Answer = new System.Windows.Forms.TextBox();
             this.label_Questions = new System.Windows.Forms.Label();
             this.button_AddQuestion = new System.Windows.Forms.Button();
@@ -551,7 +551,7 @@
         private System.Windows.Forms.Label label_Answers;
         private System.Windows.Forms.Button button_PreviousAnswer;
         private System.Windows.Forms.Button button_AddAnswer;
-        private System.Windows.Forms.RadioListBox radioListBox_Answers;
+        private RadioListBox radioListBox_Answers;
         private System.Windows.Forms.TextBox textBox_Answer;
         private System.Windows.Forms.Label label_Questions;
         private System.Windows.Forms.Button button_AddQuestion;
