@@ -4,7 +4,7 @@ using TestSystem.Common;
 
 namespace WebApiServer.Repositories
 {
-    interface IAdminsRepository
+    public interface IAdminsRepository
     {
         IEnumerable<Admin> Get();
         Admin Get(int id);

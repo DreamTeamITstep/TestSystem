@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TestSystem.Designer.Library
+namespace TestSystem.Common
 {
     [Serializable]
     public class Question

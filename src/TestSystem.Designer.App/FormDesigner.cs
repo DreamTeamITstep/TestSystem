@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-using TestSystem.Designer.Library;
+using TestSystem.Common;
 
 namespace TestSystem.Designer.App
 {
