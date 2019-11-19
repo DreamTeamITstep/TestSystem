@@ -2,10 +2,11 @@
 
 namespace TestSystem.Common
 {
-    [Serializable]
     public class TestExam
     {
-        public  Test BodyTest { get; set; } = new Test();
+        public int IdTest { get; set; }
         public int Result { get; set; }
+        public bool IsAvailable { get; set; }
+        public Test BodyTest { get; set; } = new Test();
     }
 }
