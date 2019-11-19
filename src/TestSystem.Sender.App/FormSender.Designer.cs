@@ -30,7 +30,7 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.textBox_FilaPath = new System.Windows.Forms.TextBox();
+            this.textBox_FilePath = new System.Windows.Forms.TextBox();
             this.button_SearchFile = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl_GroupStudents = new System.Windows.Forms.TabControl();
@@ -108,7 +108,7 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.textBox_FilaPath);
+            this.splitContainer2.Panel1.Controls.Add(this.textBox_FilePath);
             // 
             // splitContainer2.Panel2
             // 
@@ -117,17 +117,17 @@
             this.splitContainer2.SplitterDistance = 510;
             this.splitContainer2.TabIndex = 1;
             // 
-            // textBox_FilaPath
+            // textBox_FilePath
             // 
-            this.textBox_FilaPath.BackColor = System.Drawing.Color.DarkGray;
-            this.textBox_FilaPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_FilaPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_FilaPath.Location = new System.Drawing.Point(0, 0);
-            this.textBox_FilaPath.Multiline = true;
-            this.textBox_FilaPath.Name = "textBox_FilaPath";
-            this.textBox_FilaPath.ReadOnly = true;
-            this.textBox_FilaPath.Size = new System.Drawing.Size(510, 25);
-            this.textBox_FilaPath.TabIndex = 0;
+            this.textBox_FilePath.BackColor = System.Drawing.Color.DarkGray;
+            this.textBox_FilePath.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_FilePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_FilePath.Location = new System.Drawing.Point(0, 0);
+            this.textBox_FilePath.Multiline = true;
+            this.textBox_FilePath.Name = "textBox_FilePath";
+            this.textBox_FilePath.ReadOnly = true;
+            this.textBox_FilePath.Size = new System.Drawing.Size(510, 25);
+            this.textBox_FilePath.TabIndex = 0;
             // 
             // button_SearchFile
             // 
@@ -139,6 +139,7 @@
             this.button_SearchFile.TabIndex = 0;
             this.button_SearchFile.Text = "Search file";
             this.button_SearchFile.UseVisualStyleBackColor = true;
+            this.button_SearchFile.Click += new System.EventHandler(this.button_SearchFile_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -524,7 +525,7 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.TextBox textBox_FilaPath;
+        private System.Windows.Forms.TextBox textBox_FilePath;
         private System.Windows.Forms.Button button_SearchFile;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TabControl tabControl_GroupStudents;

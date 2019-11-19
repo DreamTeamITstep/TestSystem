@@ -12,10 +12,20 @@ namespace TestSystem.Sender.App
 {
     public partial class FormSender : Form
     {
+        private string filePath;
         public FormSender()
         {
             InitializeComponent();
         }
 
+        private void button_SearchFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog() { Filter = "XML files (*.xml)|*.xml" };
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                filePath = dialog.FileName;
+                textBox_FilePath.Text = filePath;
+            }
+        }
     }
 }
