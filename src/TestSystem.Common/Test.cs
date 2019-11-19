@@ -1,4 +1,7 @@
-﻿namespace TestSystem.Designer.Library
+﻿using System;
+using System.Collections.Generic;
+
+namespace TestSystem.Common
 {
     [Serializable]
     public class Test

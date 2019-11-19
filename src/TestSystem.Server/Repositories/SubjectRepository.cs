@@ -4,24 +4,24 @@ using TestSystem.Common;
 
 namespace TestSystem.Server.Repositories
 {
-    public class AuthorsRepository:IAuthorsRepository
+    public class SubjectRepository: ISubjectRepository
     {
-        public IEnumerable<Author> Get()
+        public IEnumerable<Subject> Get()
         {
             throw new NotImplementedException();
         }
 
-        public Author Get(int id)
+        public Subject Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Create(Author author)
+        public int Create(Subject subject)
         {
             throw new NotImplementedException();
         }
 
-        public Author Update(Author author)
+        public Subject Update(Subject subject)
         {
             throw new NotImplementedException();
         }

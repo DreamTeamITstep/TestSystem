@@ -1,6 +1,6 @@
 using System;
 
-namespace WebApiServer
+namespace TestSystem.Server
 {
     public class WeatherForecast
     {
