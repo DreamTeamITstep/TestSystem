@@ -1,4 +1,9 @@
-﻿using TestSystem.Designer.Library;
+﻿using System;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+using System.Xml.Serialization;
+using TestSystem.Designer.Library;
 
 namespace TestSystem.Designer.App
 {
@@ -38,8 +43,8 @@ namespace TestSystem.Designer.App
             currentTest.Questions.Add(new Question());
             currentQuestion = currentTest.Questions.LastOrDefault();
             radioListBox_Answers.Items.Clear();
-            label_Answers.Text = $"0/{countAnswers}";
-            label_Questions.Text = $"{++indexQuestion + 1}/{++countQuestions}";
+            label_Answers.Text = $"Answers\n0/{countAnswers}";
+            label_Questions.Text = $"Questions\n{++indexQuestion + 1}/{++countQuestions}";
         }
 
         private void toolStripTextBox_TestName_TextChanged(object sender, EventArgs e)
@@ -65,14 +70,14 @@ namespace TestSystem.Designer.App
                     if (currentQuestion.Answers[i].Correct) radioListBox_Answers.SelectedIndex = i;
                 }
                 textBox_Answer.Text = currentQuestion.Answers[indexAnswer].Text;
-                label_Answers.Text = $"{++indexAnswer + 1}/{countAnswers}";
+                label_Answers.Text = $"Answers\n{++indexAnswer + 1}/{countAnswers}";
             }
             else
             {
-                label_Answers.Text = $"0/{countAnswers}";
+                label_Answers.Text = $"Answers\n0/{countAnswers}";
             }
             textBox_Question.Text = currentQuestion.Text;
-            label_Questions.Text = $"{indexQuestion + 1}/{countQuestions}";
+            label_Questions.Text = $"Questions\n{indexQuestion + 1}/{countQuestions}";
         }
 
         private void textBox_Question_TextChanged(object sender, EventArgs e)
@@ -106,14 +111,14 @@ namespace TestSystem.Designer.App
                     if (currentQuestion.Answers[i].Correct) radioListBox_Answers.SelectedIndex = i;
                 }
                 textBox_Answer.Text = currentQuestion.Answers[indexAnswer].Text;
-                label_Answers.Text = $"{++indexAnswer + 1}/{countAnswers}";
+                label_Answers.Text = $"Answers\n{++indexAnswer + 1}/{countAnswers}";
             }
             else
             {
-                label_Answers.Text = $"0/{countAnswers}";
+                label_Answers.Text = $"Answers\n0/{countAnswers}";
             }
             textBox_Question.Text = currentQuestion.Text;
-            label_Questions.Text = $"{indexQuestion + 1}/{countQuestions}";
+            label_Questions.Text = $"Questions\n{indexQuestion + 1}/{countQuestions}";
         }
 
         private void button_DeleteQuestion_Click(object sender, EventArgs e)
@@ -128,8 +133,8 @@ namespace TestSystem.Designer.App
                 indexAnswer = -1;
                 currentQuestion = null;
                 textBox_Question.Clear();
-                label_Questions.Text = $"{indexQuestion + 1}/{--countQuestions}";
-                label_Answers.Text = $"0/{countAnswers}";
+                label_Questions.Text = $"Questions\n{indexQuestion + 1}/{--countQuestions}";
+                label_Answers.Text = $"Answers\n0/{countAnswers}";
                 return;
             }
             currentQuestion = currentTest.Questions[indexQuestion];
@@ -144,14 +149,14 @@ namespace TestSystem.Designer.App
                     if (currentQuestion.Answers[i].Correct) radioListBox_Answers.SelectedIndex = i;
                 }
                 textBox_Answer.Text = currentQuestion.Answers[indexAnswer].Text;
-                label_Answers.Text = $"{indexAnswer + 1}/{countAnswers}";
+                label_Answers.Text = $"Answers\n{indexAnswer + 1}/{countAnswers}";
             }
             else
             {
-                label_Answers.Text = $"0/{countAnswers}";
+                label_Answers.Text = $"Answers\n0/{countAnswers}";
             }
             textBox_Question.Text = currentQuestion.Text;
-            label_Questions.Text = $"{indexQuestion + 1}/{--countQuestions}";
+            label_Questions.Text = $"Questions\n{indexQuestion + 1}/{--countQuestions}";
         }
 
         private void button_AddAnswer_Click(object sender, EventArgs e)
@@ -165,7 +170,7 @@ namespace TestSystem.Designer.App
             textBox_Answer.Text = "Enter answer text here.";
             currentQuestion.Answers.Add(new Answer());
             currentAnswer = currentQuestion.Answers.LastOrDefault();
-            label_Answers.Text = $"{++indexAnswer + 1}/{++countAnswers}";
+            label_Answers.Text = $"Answers\n{++indexAnswer + 1}/{++countAnswers}";
         }
 
         private void button_DeleteAnswer_Click(object sender, EventArgs e)
@@ -178,18 +183,18 @@ namespace TestSystem.Designer.App
             currentQuestion.Answers.RemoveAt(indexAnswer);
             radioListBox_Answers.Items.RemoveAt(indexAnswer);
             if (indexAnswer == currentQuestion.Answers.Count) indexAnswer--;
-            if(currentQuestion.Answers.Count == 0)
+            if (currentQuestion.Answers.Count == 0)
             {
                 countAnswers = 0;
                 indexAnswer = -1;
                 currentAnswer = null;
                 textBox_Answer.Text = string.Empty;
-                label_Answers.Text = $"{indexAnswer + 1}/{countAnswers}";
+                label_Answers.Text = $"Answers\n{indexAnswer + 1}/{countAnswers}";
                 return;
             }
             currentAnswer = currentQuestion.Answers[indexAnswer];
             textBox_Answer.Text = currentQuestion.Answers[indexAnswer].Text;
-            label_Answers.Text = $"{indexAnswer + 1}/{--countAnswers}";
+            label_Answers.Text = $"Answers\n{indexAnswer + 1}/{--countAnswers}";
         }
 
         private void button_PreviousAnswer_Click(object sender, EventArgs e)
@@ -202,7 +207,7 @@ namespace TestSystem.Designer.App
             if (indexAnswer <= 0) return;
             currentAnswer = currentQuestion.Answers[--indexAnswer];
             textBox_Answer.Text = currentAnswer.Text;
-            label_Answers.Text = $"{indexAnswer + 1}/{countAnswers}";
+            label_Answers.Text = $"Answers\n{indexAnswer + 1}/{countAnswers}";
         }
 
         private void button_NextAnswer_Click(object sender, EventArgs e)
@@ -211,7 +216,7 @@ namespace TestSystem.Designer.App
             if (indexAnswer == currentQuestion.Answers.Count - 1) return;
             currentAnswer = currentQuestion.Answers[++indexAnswer];
             textBox_Answer.Text = currentAnswer.Text;
-            label_Answers.Text = $"{indexAnswer + 1}/{countAnswers}";
+            label_Answers.Text = $"Answers\n{indexAnswer + 1}/{countAnswers}";
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -238,7 +243,7 @@ namespace TestSystem.Designer.App
             if (currentTest.Questions.Count > 0)
             {
                 DialogResult res = MessageBox.Show("Do you want save current test?", "Current project isn't empty", MessageBoxButtons.YesNoCancel);
-                if(res == DialogResult.Yes)
+                if (res == DialogResult.Yes)
                 {
                     currentTest.Subject = textBox_Subject.Text;
                     currentTest.Theme = textBox_Theme.Text;
@@ -250,12 +255,12 @@ namespace TestSystem.Designer.App
                         formatter.Serialize(fs, currentTest);
                     }
                 }
-                if(res == DialogResult.Cancel)
+                if (res == DialogResult.Cancel)
                 {
                     return;
                 }
             }
-            for(int i = 1; i < 100; i++)
+            for (int i = 1; i < 100; i++)
             {
                 if (File.Exists($"NewTest{i}.xml")) continue;
                 else
@@ -279,8 +284,8 @@ namespace TestSystem.Designer.App
             textBox_Theme.Clear();
             textBox_Question.Clear();
             textBox_Answer.Clear();
-            label_Answers.Text = $"{indexAnswer + 1}/{countAnswers}";
-            label_Questions.Text = $"{indexQuestion + 1}/{countQuestions}";
+            label_Answers.Text = $"Answers\n{indexAnswer + 1}/{countAnswers}";
+            label_Questions.Text = $"Questions\n{indexQuestion + 1}/{countQuestions}";
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -294,7 +299,7 @@ namespace TestSystem.Designer.App
                     currentTest.Subject = textBox_Subject.Text;
                     currentTest.Theme = textBox_Theme.Text;
                     currentTest.Author = textBox_Author.Text;
-                   
+
                     File.Delete($"{ toolStripTextBox_TestName.Text}");
                     using (FileStream fs = new FileStream($"{toolStripTextBox_TestName.Text}", FileMode.CreateNew))
                     {
@@ -330,8 +335,8 @@ namespace TestSystem.Designer.App
                 textBox_Theme.Text = currentTest.Theme;
                 textBox_Question.Text = currentQuestion.Text;
                 textBox_Answer.Text = currentAnswer.Text;
-                label_Answers.Text = $"{indexAnswer + 1}/{countAnswers}";
-                label_Questions.Text = $"{indexQuestion + 1}/{countQuestions}";
+                label_Answers.Text = $"Answers\n{indexAnswer + 1}/{countAnswers}";
+                label_Questions.Text = $"Questions\n{indexQuestion + 1}/{countQuestions}";
                 this.Text = $"Test designer: {currentTest.Name}";
                 toolStripTextBox_TestName.Text = currentTest.Name;
             }
