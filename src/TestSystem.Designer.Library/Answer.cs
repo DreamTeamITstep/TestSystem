@@ -1,4 +1,6 @@
-﻿namespace TestSystem.Designer.Library
+﻿using System;
+
+namespace TestSystem.Designer.Library
 {
     [Serializable]
     public class Answer

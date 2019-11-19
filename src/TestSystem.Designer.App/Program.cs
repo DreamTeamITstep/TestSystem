@@ -1,4 +1,7 @@
-﻿namespace TestSystem.Designer.App
+﻿using System;
+using System.Windows.Forms;
+
+namespace TestSystem.Designer.App
 {
     static class Program
     {
