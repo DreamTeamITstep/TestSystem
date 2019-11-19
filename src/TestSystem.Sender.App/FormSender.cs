@@ -1,9 +1,11 @@
-﻿using System;
+﻿using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,10 +14,16 @@ namespace TestSystem.Sender.App
 {
     public partial class FormSender : Form
     {
+        private string token;
         private string filePath;
         public FormSender()
         {
             InitializeComponent();
+        }
+        public FormSender(string token)
+        {
+            InitializeComponent();
+            this.token = token;
         }
 
         private void button_SearchFile_Click(object sender, EventArgs e)
@@ -26,6 +34,11 @@ namespace TestSystem.Sender.App
                 filePath = dialog.FileName;
                 textBox_FilePath.Text = filePath;
             }
+        }
+
+        private void button_SendOnServer_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

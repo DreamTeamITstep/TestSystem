@@ -16,7 +16,9 @@ namespace TestSystem.Sender.App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormSender());
+            Application.Run(new FormAuth());
+            if (FormAuth.Token == string.Empty) return;
+            Application.Run(new FormSender(FormAuth.Token));
         }
     }
 }

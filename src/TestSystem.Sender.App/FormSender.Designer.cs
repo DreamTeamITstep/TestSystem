@@ -484,6 +484,7 @@
             this.button_SendOnServer.TabIndex = 4;
             this.button_SendOnServer.Text = "Send on server";
             this.button_SendOnServer.UseVisualStyleBackColor = true;
+            this.button_SendOnServer.Click += new System.EventHandler(this.button_SendOnServer_Click);
             // 
             // FormSender
             // 
