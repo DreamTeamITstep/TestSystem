@@ -14,6 +14,7 @@ namespace TestSystem.Server
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseUrls("http://*:32225");
                     webBuilder.UseStartup<Startup>();
                 });
     }

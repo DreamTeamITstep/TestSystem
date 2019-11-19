@@ -1,3 +1,4 @@
+using System.Data.SqlClient;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -45,6 +46,20 @@ namespace TestSystem.Server
             services.AddControllers();
             services.AddScoped<IAuthorsRepository, AuthorsRepository>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IAdminsRepository, AdminsRepository>();
+            services.AddScoped(p =>
+            {
+                var connectionStringBuilder = new SqlConnectionStringBuilder
+                {
+                    DataSource = "localhost",
+                    InitialCatalog = "master",
+                    UserID = "sa",
+                    Password = "Your_password123"
+                };
+                var connection = new SqlConnection(connectionStringBuilder.ConnectionString);
+                connection.Open();
+                return connection;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
