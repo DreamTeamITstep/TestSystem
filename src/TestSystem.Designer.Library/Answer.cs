@@ -11,11 +11,5 @@ namespace TestLibrary
     {
         public string Text { get; set; }
         public bool Correct { get; set; } = false;
-        //public Answer() { }
-        //public Answer(string text = "", bool correct = false)
-        //{ 
-        //    Text = text;
-        //    Correct = correct; 
-        //}
     }
 }
