@@ -18,8 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{7BE2D2
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSystem.Sender.App", "src\TestSystem.Sender.App\TestSystem.Sender.App.csproj", "{0670AD89-06F2-4DF1-993E-958056E01D2A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSystem.Client", "src\TestSystem.Client\TestSystem.Client.csproj", "{04C080BF-FDF5-4EF0-BB46-76B76D779A37}"
+
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +46,12 @@ Global
 		{04C080BF-FDF5-4EF0-BB46-76B76D779A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04C080BF-FDF5-4EF0-BB46-76B76D779A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04C080BF-FDF5-4EF0-BB46-76B76D779A37}.Release|Any CPU.Build.0 = Release|Any CPU
+
+		{0670AD89-06F2-4DF1-993E-958056E01D2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0670AD89-06F2-4DF1-993E-958056E01D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0670AD89-06F2-4DF1-993E-958056E01D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0670AD89-06F2-4DF1-993E-958056E01D2A}.Release|Any CPU.Build.0 = Release|Any CPU
+
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

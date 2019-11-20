@@ -19,9 +19,11 @@ namespace TestSystem.Sender.App
     {
         private string token;
         private string filePath;
+
         int groupID;
         int studentID;
         int studentInGroupID;
+
         public FormSender()
         {
             InitializeComponent();
@@ -157,5 +159,6 @@ namespace TestSystem.Sender.App
             request.AddBody(tmp);
             var response = client.Execute<Student>(request);
         }
+
     }
 }
