@@ -47,6 +47,7 @@ namespace TestSystem.Server
             services.AddScoped<IAuthorsRepository, AuthorsRepository>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IAdminsRepository, AdminsRepository>();
+            services.AddScoped<IStudentsRepository, StudentsRepository>();
             services.AddScoped(p =>
             {
                 var connectionStringBuilder = new SqlConnectionStringBuilder
