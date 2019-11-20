@@ -9,7 +9,7 @@ namespace TestSystem.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AdminController
+    public class AdminController: ControllerBase
     {
         private readonly IAdminsRepository _adminsRepository;
 
@@ -18,7 +18,7 @@ namespace TestSystem.Server.Controllers
             _adminsRepository = adminsRepository;
         }
 
-        [Authorize]
+        [Authorize(Roles = Constants.AdminRole)]
         [HttpGet]
         public IEnumerable<Admin> Get()
         {

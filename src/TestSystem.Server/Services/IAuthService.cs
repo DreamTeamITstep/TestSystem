@@ -1,9 +1,10 @@
 using System;
-using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using Dapper;
 using Microsoft.IdentityModel.Tokens;
 using TestSystem.Common;
 
@@ -16,18 +17,22 @@ namespace TestSystem.Server.Services
 
     public class AuthService: IAuthService
     {
-        private readonly IEnumerable<User> _users;
+        private readonly SqlConnection _sqlConnection;
         
-        public AuthService()
+        public AuthService(SqlConnection sqlConnection)
         {
-            _users = new[]
-            {
-                new User {Id = 1, FirstName = "Test", LastName = "User", Username = "test", Password = "test"}
-            };
+            _sqlConnection = sqlConnection;
         }
         public string Authenticate(string username, string password)
         {
-            var user = _users.Single(x => x.Username == username && x.Password == password);
+            var users = _sqlConnection.Query<User>(@"
+                SELECT Id as Id, FullName as Login, Password as Password, 'Admin' as Role FROM Admin
+                UNION ALL
+                SELECT Id as Id, FullName as Login, Password as Password, 'Teacher' as Role FROM Teacher
+                UNION ALL
+                SELECT Id as Id, FullName as Login, Password as Password, 'Student' as Role FROM Student");
+            
+            var user = users.Single(x => x.Login == username && x.Password == password);
 
             var tokenHandler = new JwtSecurityTokenHandler();
             //TODO Move secret to settings
@@ -36,7 +41,8 @@ namespace TestSystem.Server.Services
             {
                 Subject = new ClaimsIdentity(new Claim[] 
                 {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                    new Claim(ClaimTypes.Name, user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, user.Role)
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
