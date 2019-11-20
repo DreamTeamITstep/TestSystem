@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestSystem.Common;
 
@@ -14,10 +10,10 @@ namespace TestClient
     public partial class PassTest : Form
     {
         private TestExam test;
-        private int positionQuestion=0;
+        private int positionQuestion = 0;
         public int ResultTest = 0;
         private List<CurrentAnswer> answers;
-        public PassTest(TestExam test )
+        public PassTest(TestExam test)
         {
             InitializeComponent();
             answers = new List<CurrentAnswer>();
@@ -31,7 +27,7 @@ namespace TestClient
         void ShowQuestion()
         {
             checkedListBoxAnswers.Items.Clear();
-            labelNumberQuestion.Text = "Питання " + positionQuestion+1;
+            labelNumberQuestion.Text = "Питання " + positionQuestion + 1;
             labelQuestion.Text = test.BodyTest.Questions[positionQuestion].Text;
             foreach (var answer in test.BodyTest.Questions[positionQuestion].Answers)
             {
@@ -43,14 +39,18 @@ namespace TestClient
         /// </summary>
         void SaveAnswer()
         {
-            string selectedAnswer= (string) checkedListBoxAnswers.SelectedItem;
+            string selectedAnswer = (string)checkedListBoxAnswers.SelectedItem;
             bool isCorrect = test.BodyTest.Questions[positionQuestion].Answers.Where(x => string.Compare(x.Text, selectedAnswer) == 0).Select(x => x.Correct).FirstOrDefault();
 
-            var CurrentAnswer = answers.Where(x => x.IndexQuestion == positionQuestion).FirstOrDefault();
-            if (CurrentAnswer == null)
+            var currentAnswer = answers.Where(x => x.IndexQuestion == positionQuestion).FirstOrDefault();
+            if (currentAnswer == null)
+            {
                 answers.Add(new CurrentAnswer() { IndexQuestion = positionQuestion, IsCorrectAnswer = isCorrect });
+            }
             else
-                CurrentAnswer.IsCorrectAnswer = isCorrect;
+            {
+                currentAnswer.IsCorrectAnswer = isCorrect;
+            }
         }
         /// <summary>
         /// виводить інфо про те на якому питанні користувач знаходиться після кожного переключення між питаннями
@@ -63,11 +63,9 @@ namespace TestClient
             labelStatus.Text = p.ToString() + " із " + test.BodyTest.Questions.Count.ToString();
             ShowQuestion();
         }
-
         /// <summary>
-        /// збереження выдповіді і перехід на минуле питання або на останнє в списку  
+        /// збереження відповіді і перехід на минуле питання або на останнє в списку  
         /// </summary>
-
         private void pictureBoxPrev_Click(object sender, EventArgs e)
         {
             SaveAnswer();
@@ -75,12 +73,11 @@ namespace TestClient
             {
                 --positionQuestion;
                 PositionChanged();
-            }               
+            }
         }
         /// <summary>
         ///збереження выдповіді і перехід на наступне питання або перше в списку
         /// </summary>
-
         private void pictureBoxNext_Click(object sender, EventArgs e)
         {
             SaveAnswer();
@@ -88,7 +85,7 @@ namespace TestClient
             {
                 ++positionQuestion;
                 PositionChanged();
-            }                      
+            }
         }
         /// <summary>
         /// розраховує баз за тест і зберігає інформацію про пройдений тест
@@ -115,6 +112,6 @@ namespace TestClient
                     result += weight;
             }
             return (int)result;
-        }      
+        }
     }
 }
