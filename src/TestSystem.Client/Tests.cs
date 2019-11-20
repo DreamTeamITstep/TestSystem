@@ -1,12 +1,9 @@
 ﻿using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestSystem.Common;
 
@@ -25,19 +22,15 @@ namespace TestClient
         public Tests(string token)
         {
             InitializeComponent();
-            this.token = token;        
+            this.token = token;
         }
-   
-        
         private void Tests_Load(object sender, EventArgs e)
         {
             tests = new List<TestExam>();
-            SetTests();  //заглушка
-
+            //SetTests();  //заглушка
             //отримати відповідь з сервера
-            //GetTests();
+            GetTests();
             ShowTests();
-            
         }
         /// <summary>
         /// розділяє тести на доступні для здачі і на тести які уже здавались
@@ -48,7 +41,6 @@ namespace TestClient
             listView1.Items.Clear();
             if (tests.Count > 0)
             {
-
                 foreach (var test in tests)
                 {
                     if (test.IsAvailable)
@@ -68,13 +60,10 @@ namespace TestClient
                         item.SubItems.Add(test.BodyTest.Subject);
                         item.SubItems.Add(test.Result.ToString());
                         listView1.Items.Add(item);
-
                     }
-
                 }
             }
         }
-       
         private void SetTests()
         {
             List<Answer> answers = new List<Answer>();
@@ -90,7 +79,6 @@ namespace TestClient
             test1.BodyTest.Subject = "Math";
             tests.Add(test1);
 
-
             TestExam test2 = new TestExam();
             test2.BodyTest.Questions.Add(new Question(answers, "И"));
             test2.BodyTest.Questions.Add(new Question(answers, "аапвап"));
@@ -98,9 +86,7 @@ namespace TestClient
             test2.BodyTest.Name = "Test2";
             test2.BodyTest.Subject = "Math";
             tests.Add(test2);
-
             answers.Add(new Answer() { Text = "ghgh" });
-
             TestExam test3 = new TestExam();
             test2.BodyTest.Questions.Add(new Question(answers, "fgfg"));
             test2.BodyTest.Questions.Add(new Question(answers, "dfdп"));
@@ -108,7 +94,6 @@ namespace TestClient
             test3.BodyTest.Name = "Test3";
             test3.BodyTest.Subject = "Math";
             tests.Add(test3);
-
         }
 
         /// <summary>
@@ -121,20 +106,19 @@ namespace TestClient
             request.AddHeader("Authentication", $"Bearer { token}");
             var response = client.Execute<List<TestExam>>(request);
             tests.AddRange(response.Data.ToList());
-
         }
-        
+
         private void buttonPassTest_Click(object sender, EventArgs e)
         {
             Button testButton = sender as Button;
-            TestExam t = tests.Where(x => string.Compare(x.BodyTest.Name, testButton.Text)==0).FirstOrDefault();         
+            TestExam t = tests.Where(x => string.Compare(x.BodyTest.Name, testButton.Text) == 0).FirstOrDefault();
             PassTest passTest = new PassTest(t);
             passTest.ShowDialog();
             int Grade = passTest.ResultTest;
             MessageBox.Show(Grade.ToString());
             TestResult testResult = new TestResult() { IdTest = t.Id, Grade = Grade, Date = DateTime.Now };
             //відправити на сервер 
-            //SendTestResult(testResult)
+            SendTestResult(testResult)
 
             //оновити вигляд тестів
             var passedTest = tests.Where(x => x.Id == t.Id).FirstOrDefault();
@@ -142,10 +126,7 @@ namespace TestClient
             passedTest.Result = Grade;
             passedTest.Date = testResult.Date;
             ShowTests();
-
-            
         }
-
         /// <summary>
         /// відправляє результати пройденого тесту на сервер
         /// </summary>
@@ -160,11 +141,9 @@ namespace TestClient
             request.AddBody(result);
             var response = client.Execute<TestResult>(request);
         }
-
         /// <summary>
         /// робить повторний запит на сервер і оновлює інформацію про тести
-        /// </summary>
-        
+        /// </summary>       
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             tests.Clear();
