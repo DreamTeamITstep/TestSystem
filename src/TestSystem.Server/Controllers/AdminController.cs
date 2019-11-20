@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -9,7 +11,7 @@ namespace TestSystem.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AdminController
+    public class AdminController: ControllerBase
     {
         private readonly IAdminsRepository _adminsRepository;
 
@@ -18,10 +20,15 @@ namespace TestSystem.Server.Controllers
             _adminsRepository = adminsRepository;
         }
 
-        [Authorize]
+        [Authorize(Roles = Constants.AdminRole)]
         [HttpGet]
         public IEnumerable<Admin> Get()
         {
+            //example of how to extract user id and role base on token
+            var userId = Convert.ToInt32(User.Identity.Name);
+            var role = User.Claims
+                .First(c => c.Type.Equals("http://schemas.microsoft.com/ws/2008/06/identity/claims/role")).Value;
+            
             return _adminsRepository.Get();
         }
         [HttpGet("{id}")]
