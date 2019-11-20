@@ -116,8 +116,8 @@ namespace TestClient
         /// </summary>
         private void GetTests()
         {
-            RestClient client = new RestClient("http://localhost:5000");
-            var request = new RestRequest("Test", Method.GET);
+            RestClient client = new RestClient("http://localhost:32225");
+            var request = new RestRequest("test", Method.GET);
             request.AddHeader("Authentication", $"Bearer { token}");
             var response = client.Execute<List<TestExam>>(request);
             tests.AddRange(response.Data.ToList());
@@ -152,12 +152,12 @@ namespace TestClient
         /// <param name="result"> результат пройденого тесту для відправки </param>
         private void SendTestResult(TestResult result)
         {
-            var client = new RestClient("http://localhost:5000");
-            var request = new RestRequest("Test", Method.POST);
-            request.AddHeader("Authentication", $"Bearer { token}");
+            var client = new RestClient("http://localhost:32225");
+            var request = new RestRequest("test", Method.POST);
+            request.AddHeader("Authentication", $"Bearer {token}");
             request.AddHeader("Content-Type", "application/json");
             request.RequestFormat = DataFormat.Json;
-            request.AddJsonBody(result);
+            request.AddBody(result);
             var response = client.Execute<TestResult>(request);
         }
 

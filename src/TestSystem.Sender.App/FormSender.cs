@@ -47,30 +47,31 @@ namespace TestSystem.Sender.App
         private void button_SendOnServer_Click(object sender, EventArgs e)
         {
             XmlSerializer formatter = new XmlSerializer(typeof(Test));
-            var client = new RestClient("http://localhost:5000");
+            var client = new RestClient("http://localhost:32225");
             var request = new RestRequest("test", Method.POST);
             request.AddHeader("Authentication", $"Bearer {token}");
             request.AddHeader("Content-Type", "application/json");
             request.RequestFormat = DataFormat.Json;
             using (FileStream fs = new FileStream(filePath, FileMode.Open))
             {
-                request.AddBody((Test)formatter.Deserialize(fs));
+                Test tmp = (Test)formatter.Deserialize(fs);
+                request.AddBody(tmp);
             };
-            var response = client.Execute<Test>(request);
+            client.Execute<Test>(request);
         }
 
         private void FormSender_Load(object sender, EventArgs e)
         {
-            var client = new RestClient("http://localhost:5000/Group");
-            var request = new RestRequest("",Method.GET);
-            request.AddHeader("Authentication", $"Bearer {token}");
-            var response1 = client.Execute<List<Group>>(request);
-            listBox_Groups.Items.AddRange(response1.Data.ToArray());
-            client = new RestClient("http://localhost:5000/Student");
-            request = new RestRequest(Method.GET);
-            request.AddHeader("Authentication", $"Bearer {token}");
-            var response2 = client.Execute<List<Student>>(request);
-            listBox_AllStudents.Items.AddRange(response2.Data.ToArray());
+            //var client = new RestClient("http://localhost:32225/Group");
+            //var request = new RestRequest("",Method.GET);
+            //request.AddHeader("Authentication", $"Bearer {token}");
+            //var response1 = client.Execute<List<Group>>(request);
+            //listBox_Groups.Items.AddRange(response1.Data.ToArray());
+            //client = new RestClient("http://localhost:32225/Student");
+            //request = new RestRequest(Method.GET);
+            //request.AddHeader("Authentication", $"Bearer {token}");
+            //var response2 = client.Execute<List<Student>>(request);
+            //listBox_AllStudents.Items.AddRange(response2.Data.ToArray());
         }
 
         private void listBox_Groups_SelectedIndexChanged(object sender, EventArgs e)
@@ -96,7 +97,7 @@ namespace TestSystem.Sender.App
 
         private void button_AddGroup_Click(object sender, EventArgs e)
         {
-            var client = new RestClient("http://localhost:5000");
+            var client = new RestClient("http://localhost:32225");
             var request = new RestRequest("group", Method.POST);
             request.AddHeader("Authentication", $"Bearer {token}");
             request.AddHeader("Content-Type", "application/json");
@@ -107,7 +108,7 @@ namespace TestSystem.Sender.App
 
         private void button_ModifyGroup_Click(object sender, EventArgs e)
         {
-            var client = new RestClient("http://localhost:5000");
+            var client = new RestClient("http://localhost:32225");
             var request = new RestRequest("group", Method.PUT);
             request.AddHeader("Authentication", $"Bearer {token}");
             request.AddHeader("Content-Type", "application/json");
@@ -118,7 +119,7 @@ namespace TestSystem.Sender.App
 
         private void button_DeleteGroup_Click(object sender, EventArgs e)
         {
-            var client = new RestClient("http://localhost:5000");
+            var client = new RestClient("http://localhost:32225");
             var request = new RestRequest($"group/{groupID}", Method.DELETE);
             request.AddHeader("Authentication", $"Bearer {token}");
             var response = client.Execute<Group>(request);
@@ -126,7 +127,7 @@ namespace TestSystem.Sender.App
 
         private void button_AddToGroup_Click(object sender, EventArgs e)
         {
-            var client = new RestClient("http://localhost:5000");
+            var client = new RestClient("http://localhost:32225");
             var request = new RestRequest("student", Method.PUT);
             request.AddHeader("Authentication", $"Bearer {token}");
             request.AddHeader("Content-Type", "application/json");
@@ -149,7 +150,7 @@ namespace TestSystem.Sender.App
 
         private void button_RemoveFromGroup_Click(object sender, EventArgs e)
         {
-            var client = new RestClient("http://localhost:5000");
+            var client = new RestClient("http://localhost:32225");
             var request = new RestRequest("student", Method.PUT);
             request.AddHeader("Authentication", $"Bearer {token}");
             request.AddHeader("Content-Type", "application/json");
