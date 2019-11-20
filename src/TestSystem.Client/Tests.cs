@@ -102,7 +102,7 @@ namespace TestClient
         private void GetTests()
         {
             RestClient client = new RestClient("http://localhost:32225");
-            var request = new RestRequest("test", Method.GET);
+            var request = new RestRequest("test/exam", Method.GET);
             request.AddHeader("Authentication", $"Bearer { token}");
             var response = client.Execute<List<TestExam>>(request);
             tests.AddRange(response.Data.ToList());

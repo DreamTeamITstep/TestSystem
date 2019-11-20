@@ -11,5 +11,9 @@ namespace TestSystem.Common
         public int Result { get; set; }
         public DateTime Date { get; set; }
         public Test BodyTest { get; set; } = new Test();
+        public override string ToString()
+        {
+            return BodyTest.Name;
+        }
     }
 }
