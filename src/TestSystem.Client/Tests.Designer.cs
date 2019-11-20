@@ -77,7 +77,7 @@
             // buttonUpdate
             // 
             this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.buttonUpdate.Location = new System.Drawing.Point(13, 405);
+            this.buttonUpdate.Location = new System.Drawing.Point(13, 396);
             this.buttonUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(112, 32);
@@ -95,6 +95,7 @@
             this.label3.Size = new System.Drawing.Size(49, 18);
             this.label3.TabIndex = 2;
             this.label3.Text = "Група";
+            this.label3.Visible = false;
             // 
             // label2
             // 
@@ -105,6 +106,7 @@
             this.label2.Size = new System.Drawing.Size(38, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "Ім\'я";
+            this.label2.Visible = false;
             // 
             // label1
             // 
@@ -115,6 +117,7 @@
             this.label1.Size = new System.Drawing.Size(74, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Прізвище";
+            this.label1.Visible = false;
             // 
             // tabControl1
             // 
@@ -154,11 +157,11 @@
             // ResultTests
             // 
             this.ResultTests.Controls.Add(this.listView1);
-            this.ResultTests.Location = new System.Drawing.Point(4, 27);
+            this.ResultTests.Location = new System.Drawing.Point(4, 22);
             this.ResultTests.Margin = new System.Windows.Forms.Padding(4);
             this.ResultTests.Name = "ResultTests";
             this.ResultTests.Padding = new System.Windows.Forms.Padding(4);
-            this.ResultTests.Size = new System.Drawing.Size(643, 419);
+            this.ResultTests.Size = new System.Drawing.Size(643, 424);
             this.ResultTests.TabIndex = 1;
             this.ResultTests.Text = "Результати тестів";
             this.ResultTests.UseVisualStyleBackColor = true;
@@ -175,7 +178,7 @@
             this.listView1.Location = new System.Drawing.Point(4, 4);
             this.listView1.Margin = new System.Windows.Forms.Padding(4);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(635, 411);
+            this.listView1.Size = new System.Drawing.Size(635, 416);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
