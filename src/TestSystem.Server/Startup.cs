@@ -48,6 +48,10 @@ namespace TestSystem.Server
             services.AddScoped<IAuthorsRepository, AuthorsRepository>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IAdminsRepository, AdminsRepository>();
+            services.AddScoped<IStudentsRepository, StudentsRepository>();
+            services.AddScoped<IGroupsRepository, GroupsRepository>();
+            services.AddScoped<ISubjectRepository, SubjectRepository>();
+            services.AddScoped<ITestsRepository, TestRepository>();
             services.AddScoped(p =>
             {
                 var connectionStringBuilder = new SqlConnectionStringBuilder
