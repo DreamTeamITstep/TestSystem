@@ -29,6 +29,8 @@ namespace TestSystem.Sender.App
         public FormAuth()
         {
             InitializeComponent();
+            textBox_Login.Text = "Admin pro";
+            textBox_Password.Text = "admin";
         }
 
         private void button_SignIn_Click(object sender, EventArgs e)
