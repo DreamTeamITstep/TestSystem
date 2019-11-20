@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TestSystem.Designer.App\TestSystem.Designer.App.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.6.0" />
   </ItemGroup>
 

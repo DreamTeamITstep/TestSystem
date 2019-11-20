@@ -84,7 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TestSystem.Common\TestSystem.Common.csproj">
-      <Project>{0850FF23-3A25-46E2-82FC-2A84DFF8EC2E}</Project>
+      <Project>{0850ff23-3a25-46e2-82fc-2a84dff8ec2e}</Project>
       <Name>TestSystem.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\TestSystem.Designer.Library\TestSystem.Designer.Library.csproj">
