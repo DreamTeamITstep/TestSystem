@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
+using Newtonsoft.Json;
 using TestSystem.Common;
 
 namespace TestSystem.Server.Repositories
@@ -28,12 +29,15 @@ namespace TestSystem.Server.Repositories
 
         public int Create(Test test)
         {
+            var face = new Test();
+            var faceTest =  JsonConvert.SerializeObject(face);
+
             //TODO Ask about Content
-            var idTeacher = _sqlConnection.Query<Author>($"SELECT Id FROM Teacher WHERE FullName ='{test.Author}'").First();
-            var idSubject = _sqlConnection.Query<Author>($"SELECT Id FROM Subject WHERE Name = '{test.Subject}'")
+            var idTeacher = _sqlConnection.Query<int>($"SELECT Id FROM Teacher WHERE FullName ='{test.Author}'").First();
+            var idSubject = _sqlConnection.Query<int>($"SELECT Id FROM Subject WHERE Name = '{test.Subject}'")
                 .First();
             _sqlConnection.Query<Test>(
-                $"INSERT INTO Test(Name, Id_Teacher,Id_Subject,Date, Content)VALUES({test.Name},{idTeacher},{idSubject},{DateTime.Now},{test} )");
+                $"INSERT INTO Test(Name, Id_Teacher,Id_Subject,Date, Content)VALUES('{test.Name},{idTeacher},{idSubject},{DateTime.Now},{JsonConvert.SerializeObject(test)} )");
             var res = _sqlConnection.Query<Test>($"SELECT * FROM Test Where Id ={test}").First();//TODO test.id
             return res != null ? 1 : 0;
         }
@@ -42,10 +46,40 @@ namespace TestSystem.Server.Repositories
         {
             throw new System.NotImplementedException();
         }
-
+        
         public int Delete(int id)
         {
             throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<TestExam> GetExams()
+        {
+            var tests = _sqlConnection.Query<(int Id, string Content, int Result)>("SELECT Id, Content, TestResult as Result FROM Test");
+            foreach (var test in tests)
+            {
+                var result = new TestExam
+                {
+                    Id = test.Id, 
+                    BodyTest = JsonConvert.DeserializeObject<Test>(test.Content.Replace("\\", string.Empty)),
+                    Result = test.Result,
+                    IsAvailable = test.Result == 0
+                };
+                yield return result;
+            }   
+        }
+
+        public void PassExam(TestExam test)
+        {
+            _sqlConnection.Execute(@"
+                UPDATE Test 
+                SET TestResult = @TestResult, 
+                Date = @Now 
+                WHERE Id = @Id", new
+            {
+                Id = test.Id,
+                TestResult = test.Result,
+                Now = DateTime.Now
+            });
         }
     }
 }

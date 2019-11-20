@@ -24,6 +24,18 @@ namespace TestSystem.Server.Controllers
             return _testsRepository.Get();
         }
 
+        [HttpGet("exam")]
+        public IEnumerable<TestExam> GetExam()
+        {
+            return _testsRepository.GetExams();
+        }
+
+        [HttpPost("exam")]
+        public void PassExam([FromBody]TestExam testExam)
+        { 
+            _testsRepository.PassExam(testExam);
+        }
+
         [HttpGet("{id}")]
         public Test Get(int id)
         {

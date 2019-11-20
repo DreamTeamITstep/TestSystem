@@ -10,5 +10,7 @@ namespace TestSystem.Server.Repositories
         int Create(Test test);
         Test Update(Test test);
         int Delete(int id);
+        IEnumerable<TestExam> GetExams();
+        void PassExam(TestExam test);
     }
 }

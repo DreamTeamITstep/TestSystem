@@ -75,17 +75,18 @@ go
 
 create table Test
 (
-    Id         int identity
-        primary key,
-    Name       varchar(50),
-    Id_Teacher int
-        constraint Test_Teacher__fk
-            references Teacher,
-    Id_Subject int
-        constraint Test_Subject__fk
-            references Subject,
-    Date       date,
-    Content    varchar(max)
+  Id         int identity
+    primary key,
+  Name       varchar(50),
+  Id_Teacher int
+    constraint Test_Teacher__fk
+    references Teacher,
+  Id_Subject int
+    constraint Test_Subject__fk
+    references Subject,
+  Date       date,
+  Content    varchar(max),
+  TestResult int
 )
 go
 
