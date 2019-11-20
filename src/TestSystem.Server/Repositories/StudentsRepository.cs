@@ -6,7 +6,7 @@ using TestSystem.Common;
 
 namespace TestSystem.Server.Repositories
 {
-    public class StudentsRepository:IStudentsRepository
+    public class StudentsRepository : IStudentsRepository
     {
         private readonly SqlConnection _sqlConnection;
 
@@ -16,7 +16,7 @@ namespace TestSystem.Server.Repositories
         }
         public IEnumerable<Student> Get()
         {
-            return _sqlConnection.Query<Student>("SELECT Id, FullName, Id_Role as RoleId, Password FROM Student");
+            return _sqlConnection.Query<Student>("SELECT Id, FullName, Id_Role as RoleId, Id_Group as GroupId, Password FROM Student");
         }
 
         public Student Get(int id)
@@ -34,9 +34,15 @@ namespace TestSystem.Server.Repositories
 
         public Student Update(Student student)
         {
-            _sqlConnection.Query<Student>(
-                $"UPDATE Student SET FullName ='{student.FullName}',Id_Role ='{student.RoleId}',Password = '{student.Password}, Id_Group ={student.GroupId} WHERE FullName ={student.FullName}");
-            return _sqlConnection.Query<Student>($"SELECT * FROM Student WHERE FullName = {student.FullName}").First();
+            var res = _sqlConnection.Query<Student>($"SELECT * FROM Student WHERE FullName = '{student.FullName}'");
+            if (res != null)
+            {
+                _sqlConnection.Query<Student>(
+                    $"UPDATE Student SET FullName ='{student.FullName}',Id_Role ='{student.RoleId}', Id_Group = '{student.GroupId}',Password = '{student.Password}'WHERE FullName ={student.FullName}");
+                return _sqlConnection.Query<Student>($"SELECT * FROM Student WHERE FullName = {student.FullName}")
+                    .First();
+            }
+            throw new System.NotImplementedException();
         }
 
         public int Delete(int id)

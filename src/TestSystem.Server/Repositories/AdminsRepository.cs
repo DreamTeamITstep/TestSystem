@@ -34,9 +34,15 @@ namespace TestSystem.Server.Repositories
 
         public Admin Update(Admin admin)
         {
-            _sqlConnection.Query<Admin>(
-                $"UPDATE Admin SET FullName ='{admin.FullName}',Id_Role ='{admin.RoleId}',Password = '{admin.Password}'WHERE Id ={admin.Id}");
-             return _sqlConnection.Query<Admin>($"SELECT * FROM Admin WHERE Id = {admin.Id}").First();
+            var res = _sqlConnection.Query<Admin>($"SELECT * FROM Admin WHERE FullName = '{admin.FullName}'");
+            if (res != null)
+            {
+                _sqlConnection.Query<Admin>(
+                    $"UPDATE Admin SET FullName ='{admin.FullName}',Id_Role ='{admin.RoleId}',Password = '{admin.Password}'WHERE FullName ={admin.FullName}");
+                return _sqlConnection.Query<Admin>($"SELECT * FROM Admin WHERE FullName = {admin.FullName}")
+                    .First();
+            }
+            throw new System.NotImplementedException();
         }
 
         public int Delete(int id)

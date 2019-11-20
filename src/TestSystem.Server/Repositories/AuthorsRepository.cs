@@ -37,9 +37,15 @@ namespace TestSystem.Server.Repositories
         public Author Update(Author author)
         {
             //TODO What's better WHERE FullName = {author.FullName}" or WHERE Id = {author.id}"
-            _sqlConnection.Query<Author>(
-                $"UPDATE Teacher SET FullName ='{author.FullName}',Id_Role ='{author.RoleId}',Password = '{author.Password}'WHERE FullName ={author.FullName}");
-            return _sqlConnection.Query<Author>($"SELECT * FROM Teacher WHERE FullName = {author.FullName}").First();
+            var res =_sqlConnection.Query<Author>($"SELECT * FROM Teacher WHERE FullName = '{author.FullName}'");
+            if (res != null)
+            {
+                _sqlConnection.Execute(
+                    $"UPDATE Teacher SET FullName ='{author.FullName}',Id_Role ='{author.RoleId}',Password = '{author.Password}'WHERE FullName ={author.FullName}");
+                return _sqlConnection.Query<Author>($"SELECT * FROM Teacher WHERE FullName = {author.FullName}")
+                    .First();
+            }
+            throw new System.NotImplementedException();
         }
 
         public int Delete(int id)
