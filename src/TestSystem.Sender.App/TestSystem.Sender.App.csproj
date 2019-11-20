@@ -93,5 +93,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestSystem.Common\TestSystem.Common.csproj">
+      <Project>{0850FF23-3A25-46E2-82FC-2A84DFF8EC2E}</Project>
+      <Name>TestSystem.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -33,13 +33,22 @@
             this.textBox_FilePath = new System.Windows.Forms.TextBox();
             this.button_SearchFile = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tabControl_AllStudents = new System.Windows.Forms.TabControl();
+            this.tabPage_AllStudents = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.button_AddToGroup = new System.Windows.Forms.Button();
+            this.listBox_AllStudents = new System.Windows.Forms.ListBox();
             this.tabControl_GroupStudents = new System.Windows.Forms.TabControl();
             this.tabPage_GroupStudents = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.button4 = new System.Windows.Forms.Button();
             this.listBox_GroupStudents = new System.Windows.Forms.ListBox();
             this.tabControl_Groups = new System.Windows.Forms.TabControl();
             this.tabPage_Groups = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.button_Disallow = new System.Windows.Forms.Button();
+            this.button_Allow = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.button_ModifyGroup = new System.Windows.Forms.Button();
             this.button_AddGroup = new System.Windows.Forms.Button();
@@ -47,15 +56,6 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.button_DeleteGoup = new System.Windows.Forms.Button();
             this.textBox_GroupName = new System.Windows.Forms.TextBox();
-            this.tabControl_AllStudents = new System.Windows.Forms.TabControl();
-            this.tabPage_AllStudents = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.listBox_AllStudents = new System.Windows.Forms.ListBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button_AddToGroup = new System.Windows.Forms.Button();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.button_Allow = new System.Windows.Forms.Button();
-            this.button_Disallow = new System.Windows.Forms.Button();
             this.button_SendOnServer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -66,18 +66,18 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tabControl_AllStudents.SuspendLayout();
+            this.tabPage_AllStudents.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             this.tabControl_GroupStudents.SuspendLayout();
             this.tabPage_GroupStudents.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tabControl_Groups.SuspendLayout();
             this.tabPage_Groups.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tabControl_AllStudents.SuspendLayout();
-            this.tabPage_AllStudents.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -166,6 +166,75 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(600, 421);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // tabControl_AllStudents
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.tabControl_AllStudents, 2);
+            this.tabControl_AllStudents.Controls.Add(this.tabPage_AllStudents);
+            this.tabControl_AllStudents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl_AllStudents.Location = new System.Drawing.Point(302, 213);
+            this.tabControl_AllStudents.Name = "tabControl_AllStudents";
+            this.tableLayoutPanel1.SetRowSpan(this.tabControl_AllStudents, 3);
+            this.tabControl_AllStudents.SelectedIndex = 0;
+            this.tabControl_AllStudents.Size = new System.Drawing.Size(295, 205);
+            this.tabControl_AllStudents.TabIndex = 2;
+            // 
+            // tabPage_AllStudents
+            // 
+            this.tabPage_AllStudents.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage_AllStudents.Controls.Add(this.tableLayoutPanel6);
+            this.tabPage_AllStudents.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_AllStudents.Name = "tabPage_AllStudents";
+            this.tabPage_AllStudents.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_AllStudents.Size = new System.Drawing.Size(287, 179);
+            this.tabPage_AllStudents.TabIndex = 0;
+            this.tabPage_AllStudents.Text = "All students";
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Controls.Add(this.button_AddToGroup, 0, 4);
+            this.tableLayoutPanel6.Controls.Add(this.listBox_AllStudents, 0, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 5;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(281, 173);
+            this.tableLayoutPanel6.TabIndex = 0;
+            // 
+            // button_AddToGroup
+            // 
+            this.tableLayoutPanel6.SetColumnSpan(this.button_AddToGroup, 2);
+            this.button_AddToGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_AddToGroup.Location = new System.Drawing.Point(0, 136);
+            this.button_AddToGroup.Margin = new System.Windows.Forms.Padding(0);
+            this.button_AddToGroup.Name = "button_AddToGroup";
+            this.button_AddToGroup.Size = new System.Drawing.Size(281, 37);
+            this.button_AddToGroup.TabIndex = 2;
+            this.button_AddToGroup.Text = "Add to group";
+            this.button_AddToGroup.UseVisualStyleBackColor = true;
+            // 
+            // listBox_AllStudents
+            // 
+            this.listBox_AllStudents.BackColor = System.Drawing.Color.DarkGray;
+            this.tableLayoutPanel6.SetColumnSpan(this.listBox_AllStudents, 2);
+            this.listBox_AllStudents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox_AllStudents.FormattingEnabled = true;
+            this.listBox_AllStudents.Location = new System.Drawing.Point(3, 3);
+            this.listBox_AllStudents.Name = "listBox_AllStudents";
+            this.tableLayoutPanel6.SetRowSpan(this.listBox_AllStudents, 4);
+            this.listBox_AllStudents.Size = new System.Drawing.Size(275, 130);
+            this.listBox_AllStudents.TabIndex = 0;
+            // 
             // tabControl_GroupStudents
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.tabControl_GroupStudents, 2);
@@ -210,6 +279,18 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(281, 172);
             this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // button4
+            // 
+            this.tableLayoutPanel5.SetColumnSpan(this.button4, 2);
+            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button4.Location = new System.Drawing.Point(0, 136);
+            this.button4.Margin = new System.Windows.Forms.Padding(0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(281, 36);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "Remove from group";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // listBox_GroupStudents
             // 
@@ -270,6 +351,44 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(279, 383);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 1;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.button_Disallow, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.button_Allow, 0, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 285);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 2;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.21951F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.78049F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(133, 41);
+            this.tableLayoutPanel7.TabIndex = 3;
+            // 
+            // button_Disallow
+            // 
+            this.button_Disallow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_Disallow.Location = new System.Drawing.Point(0, 20);
+            this.button_Disallow.Margin = new System.Windows.Forms.Padding(0);
+            this.button_Disallow.Name = "button_Disallow";
+            this.button_Disallow.Size = new System.Drawing.Size(133, 21);
+            this.button_Disallow.TabIndex = 1;
+            this.button_Disallow.Text = "Disallow";
+            this.button_Disallow.UseVisualStyleBackColor = true;
+            // 
+            // button_Allow
+            // 
+            this.button_Allow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_Allow.Location = new System.Drawing.Point(0, 0);
+            this.button_Allow.Margin = new System.Windows.Forms.Padding(0);
+            this.button_Allow.Name = "button_Allow";
+            this.button_Allow.Size = new System.Drawing.Size(133, 20);
+            this.button_Allow.TabIndex = 0;
+            this.button_Allow.Text = "Allow";
+            this.button_Allow.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel4
             // 
@@ -356,125 +475,6 @@
             this.textBox_GroupName.Size = new System.Drawing.Size(133, 24);
             this.textBox_GroupName.TabIndex = 2;
             // 
-            // tabControl_AllStudents
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.tabControl_AllStudents, 2);
-            this.tabControl_AllStudents.Controls.Add(this.tabPage_AllStudents);
-            this.tabControl_AllStudents.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl_AllStudents.Location = new System.Drawing.Point(302, 213);
-            this.tabControl_AllStudents.Name = "tabControl_AllStudents";
-            this.tableLayoutPanel1.SetRowSpan(this.tabControl_AllStudents, 3);
-            this.tabControl_AllStudents.SelectedIndex = 0;
-            this.tabControl_AllStudents.Size = new System.Drawing.Size(295, 205);
-            this.tabControl_AllStudents.TabIndex = 2;
-            // 
-            // tabPage_AllStudents
-            // 
-            this.tabPage_AllStudents.BackColor = System.Drawing.Color.DimGray;
-            this.tabPage_AllStudents.Controls.Add(this.tableLayoutPanel6);
-            this.tabPage_AllStudents.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_AllStudents.Name = "tabPage_AllStudents";
-            this.tabPage_AllStudents.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_AllStudents.Size = new System.Drawing.Size(287, 179);
-            this.tabPage_AllStudents.TabIndex = 0;
-            this.tabPage_AllStudents.Text = "All students";
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Controls.Add(this.button_AddToGroup, 0, 4);
-            this.tableLayoutPanel6.Controls.Add(this.listBox_AllStudents, 0, 0);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 5;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(281, 173);
-            this.tableLayoutPanel6.TabIndex = 0;
-            // 
-            // listBox_AllStudents
-            // 
-            this.listBox_AllStudents.BackColor = System.Drawing.Color.DarkGray;
-            this.tableLayoutPanel6.SetColumnSpan(this.listBox_AllStudents, 2);
-            this.listBox_AllStudents.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox_AllStudents.FormattingEnabled = true;
-            this.listBox_AllStudents.Location = new System.Drawing.Point(3, 3);
-            this.listBox_AllStudents.Name = "listBox_AllStudents";
-            this.tableLayoutPanel6.SetRowSpan(this.listBox_AllStudents, 4);
-            this.listBox_AllStudents.Size = new System.Drawing.Size(275, 130);
-            this.listBox_AllStudents.TabIndex = 0;
-            // 
-            // button4
-            // 
-            this.tableLayoutPanel5.SetColumnSpan(this.button4, 2);
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.Location = new System.Drawing.Point(0, 136);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(281, 36);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Remove from group";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button_AddToGroup
-            // 
-            this.tableLayoutPanel6.SetColumnSpan(this.button_AddToGroup, 2);
-            this.button_AddToGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_AddToGroup.Location = new System.Drawing.Point(0, 136);
-            this.button_AddToGroup.Margin = new System.Windows.Forms.Padding(0);
-            this.button_AddToGroup.Name = "button_AddToGroup";
-            this.button_AddToGroup.Size = new System.Drawing.Size(281, 37);
-            this.button_AddToGroup.TabIndex = 2;
-            this.button_AddToGroup.Text = "Add to group";
-            this.button_AddToGroup.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.ColumnCount = 1;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Controls.Add(this.button_Disallow, 0, 1);
-            this.tableLayoutPanel7.Controls.Add(this.button_Allow, 0, 0);
-            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 285);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 2;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.21951F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.78049F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(133, 41);
-            this.tableLayoutPanel7.TabIndex = 3;
-            // 
-            // button_Allow
-            // 
-            this.button_Allow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_Allow.Location = new System.Drawing.Point(0, 0);
-            this.button_Allow.Margin = new System.Windows.Forms.Padding(0);
-            this.button_Allow.Name = "button_Allow";
-            this.button_Allow.Size = new System.Drawing.Size(133, 21);
-            this.button_Allow.TabIndex = 0;
-            this.button_Allow.Text = "Allow";
-            this.button_Allow.UseVisualStyleBackColor = true;
-            // 
-            // button_Disallow
-            // 
-            this.button_Disallow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_Disallow.Location = new System.Drawing.Point(0, 21);
-            this.button_Disallow.Margin = new System.Windows.Forms.Padding(0);
-            this.button_Disallow.Name = "button_Disallow";
-            this.button_Disallow.Size = new System.Drawing.Size(133, 20);
-            this.button_Disallow.TabIndex = 1;
-            this.button_Disallow.Text = "Disallow";
-            this.button_Disallow.UseVisualStyleBackColor = true;
-            // 
             // button_SendOnServer
             // 
             this.button_SendOnServer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -495,6 +495,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "FormSender";
             this.Text = "Sender";
+            this.Load += new System.EventHandler(this.FormSender_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -505,19 +506,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tabControl_AllStudents.ResumeLayout(false);
+            this.tabPage_AllStudents.ResumeLayout(false);
+            this.tableLayoutPanel6.ResumeLayout(false);
             this.tabControl_GroupStudents.ResumeLayout(false);
             this.tabPage_GroupStudents.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tabControl_Groups.ResumeLayout(false);
             this.tabPage_Groups.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tabControl_AllStudents.ResumeLayout(false);
-            this.tabPage_AllStudents.ResumeLayout(false);
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
