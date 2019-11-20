@@ -10,6 +10,7 @@ namespace TestSystem.Server.Controllers
     [ApiController]
     [Route("[controller]")]
     public class GroupController:ControllerBase
+
     {
         private readonly IGroupsRepository _groupsRepository;
 

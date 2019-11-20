@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestSystem.Common;
 
 namespace TestClient
 {
@@ -32,12 +33,20 @@ namespace TestClient
         }
         private void GetAcces()
         {
-            var client = new RestClient("http://localhost:5000");
-            var request = new RestRequest("auth / login", Method.POST);
-            request.AddParameter("Login", textBoxLogin.Text);
-            request.AddParameter("Password", GetHash(textBoxPassword.Text));
-            //request.AddHeader(“Authentication”, $“Bearer {token}”);
-            request.AddHeader("Content - Type", "application / json");
+            var loginr = new LoginRequest();
+            var client = new RestClient("http://localhost:32225");
+            var request = new RestRequest("auth/login", Method.POST);
+            request.RequestFormat = DataFormat.Json;
+            using (var md5 = MD5.Create())
+            {
+                loginr = new LoginRequest()
+                {
+                    Login = textBoxLogin.Text,
+                    Password = GetMd5Hash(md5, textBoxPassword.Text)
+                };
+            }
+            request.AddBody(loginr);
+            request.AddHeader("Content-Type", "application/json");
             try
             {
                 var response = client.Execute(request);
@@ -47,7 +56,7 @@ namespace TestClient
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Не вірний логін та пароль");
+                MessageBox.Show("Невірний логін та пароль");
             }
         }
 
@@ -57,6 +66,17 @@ namespace TestClient
             var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
             MessageBox.Show(Convert.ToBase64String(hash));
             return Convert.ToBase64String(hash);
+        }
+
+        static string GetMd5Hash(MD5 md5Hash, string input)
+        {
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+            StringBuilder sBuilder = new StringBuilder();
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+            return sBuilder.ToString();
         }
     }
 }
