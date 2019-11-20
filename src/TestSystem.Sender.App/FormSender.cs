@@ -57,12 +57,12 @@ namespace TestSystem.Sender.App
         private void FormSender_Load(object sender, EventArgs e)
         {
             var client = new RestClient("http://localhost:5000/Group");
-            var request = new RestRequest("group", Method.GET);
+            var request = new RestRequest(Method.GET);
             request.AddHeader("Authentication", $"Bearer {token}");
             var response1 = client.Execute<List<Group>>(request);
             listBox_Groups.Items.AddRange(response1.Data.ToArray());
             client = new RestClient("http://localhost:5000/Student");
-            request = new RestRequest("student", Method.GET);
+            request = new RestRequest(Method.GET);
             request.AddHeader("Authentication", $"Bearer {token}");
             var response2 = client.Execute<List<Student>>(request);
             listBox_AllStudents.Items.AddRange(response2.Data.ToArray());
