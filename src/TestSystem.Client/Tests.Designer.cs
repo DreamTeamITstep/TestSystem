@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tests));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.buttonUpdate = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
             this.columnNameTest = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnSubject = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnGrade = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.buttonUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -55,7 +55,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -74,6 +74,18 @@
             this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 0;
             // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.buttonUpdate.Location = new System.Drawing.Point(13, 396);
+            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(112, 32);
+            this.buttonUpdate.TabIndex = 3;
+            this.buttonUpdate.Text = "Оновити";
+            this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -83,6 +95,7 @@
             this.label3.Size = new System.Drawing.Size(49, 18);
             this.label3.TabIndex = 2;
             this.label3.Text = "Група";
+            this.label3.Visible = false;
             // 
             // label2
             // 
@@ -93,6 +106,7 @@
             this.label2.Size = new System.Drawing.Size(38, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "Ім\'я";
+            this.label2.Visible = false;
             // 
             // label1
             // 
@@ -103,6 +117,7 @@
             this.label1.Size = new System.Drawing.Size(74, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Прізвище";
+            this.label1.Visible = false;
             // 
             // tabControl1
             // 
@@ -110,7 +125,7 @@
             this.tabControl1.Controls.Add(this.ResultTests);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(651, 450);
@@ -121,9 +136,9 @@
             // 
             this.EnabledTests.Controls.Add(this.panelAvailableTests);
             this.EnabledTests.Location = new System.Drawing.Point(4, 27);
-            this.EnabledTests.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EnabledTests.Margin = new System.Windows.Forms.Padding(4);
             this.EnabledTests.Name = "EnabledTests";
-            this.EnabledTests.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EnabledTests.Padding = new System.Windows.Forms.Padding(4);
             this.EnabledTests.Size = new System.Drawing.Size(643, 419);
             this.EnabledTests.TabIndex = 0;
             this.EnabledTests.Text = "Доступні тести";
@@ -134,7 +149,7 @@
             this.panelAvailableTests.BackColor = System.Drawing.Color.Maroon;
             this.panelAvailableTests.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAvailableTests.Location = new System.Drawing.Point(4, 4);
-            this.panelAvailableTests.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelAvailableTests.Margin = new System.Windows.Forms.Padding(4);
             this.panelAvailableTests.Name = "panelAvailableTests";
             this.panelAvailableTests.Size = new System.Drawing.Size(635, 411);
             this.panelAvailableTests.TabIndex = 0;
@@ -142,11 +157,11 @@
             // ResultTests
             // 
             this.ResultTests.Controls.Add(this.listView1);
-            this.ResultTests.Location = new System.Drawing.Point(4, 27);
-            this.ResultTests.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ResultTests.Location = new System.Drawing.Point(4, 22);
+            this.ResultTests.Margin = new System.Windows.Forms.Padding(4);
             this.ResultTests.Name = "ResultTests";
-            this.ResultTests.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.ResultTests.Size = new System.Drawing.Size(643, 419);
+            this.ResultTests.Padding = new System.Windows.Forms.Padding(4);
+            this.ResultTests.Size = new System.Drawing.Size(643, 424);
             this.ResultTests.TabIndex = 1;
             this.ResultTests.Text = "Результати тестів";
             this.ResultTests.UseVisualStyleBackColor = true;
@@ -161,9 +176,9 @@
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(4, 4);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(635, 411);
+            this.listView1.Size = new System.Drawing.Size(635, 416);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -185,18 +200,6 @@
             this.columnGrade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnGrade.Width = 135;
             // 
-            // buttonUpdate
-            // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.buttonUpdate.Location = new System.Drawing.Point(13, 405);
-            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(112, 32);
-            this.buttonUpdate.TabIndex = 3;
-            this.buttonUpdate.Text = "Оновити";
-            this.buttonUpdate.UseVisualStyleBackColor = false;
-            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
-            // 
             // Tests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -204,7 +207,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Monotype Corsiva", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Tests";
             this.Text = "Tests";
             this.Load += new System.EventHandler(this.Tests_Load);

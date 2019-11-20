@@ -34,11 +34,10 @@ namespace TestSystem.Server.Repositories
 
             //TODO Ask about Content
             var idTeacher = _sqlConnection.Query<int>($"SELECT Id FROM Teacher WHERE FullName ='{test.Author}'").First();
-            var idSubject = _sqlConnection.Query<int>($"SELECT Id FROM Subject WHERE Name = '{test.Subject}'")
-                .First();
-            _sqlConnection.Query<Test>(
-                $"INSERT INTO Test(Name, Id_Teacher,Id_Subject,Date, Content)VALUES('{test.Name},{idTeacher},{idSubject},{DateTime.Now},{JsonConvert.SerializeObject(test)} )");
-            var res = _sqlConnection.Query<Test>($"SELECT * FROM Test Where Id ={test}").First();//TODO test.id
+            var idSubject = _sqlConnection.Query<int>($"SELECT Id FROM Subject WHERE Name = '{test.Subject}'").First();
+            var query = $"INSERT INTO Test(Name, Id_Teacher,Id_Subject,Date, Content)VALUES('{test.Name}',{idTeacher},{idSubject},'{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}','{JsonConvert.SerializeObject(test)}' )";
+             _sqlConnection.Query(query);
+            var res = _sqlConnection.Query<int>($"SELECT * FROM Test Where Name ='{test.Name}'").First();//TODO test.id
             return res != null ? 1 : 0;
         }
 
