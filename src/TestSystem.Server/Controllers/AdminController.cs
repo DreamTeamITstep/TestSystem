@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -22,6 +24,11 @@ namespace TestSystem.Server.Controllers
         [HttpGet]
         public IEnumerable<Admin> Get()
         {
+            //example of how to extract user id and role base on token
+            var userId = Convert.ToInt32(User.Identity.Name);
+            var role = User.Claims
+                .First(c => c.Type.Equals("http://schemas.microsoft.com/ws/2008/06/identity/claims/role")).Value;
+            
             return _adminsRepository.Get();
         }
         [HttpGet("{id}")]
