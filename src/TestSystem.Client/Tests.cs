@@ -14,8 +14,13 @@ namespace TestClient
 {
     public partial class Tests : Form
     {
+        /// <summary>
+        /// зберігає токен для Requst
+        /// </summary>
         private string token = String.Empty;
-        
+        /// <summary>
+        /// зберігає всіх тестів які студент може здати і які уже здавав
+        /// </summary>
         private List<TestExam> tests;
         public Tests(string token)
         {
@@ -23,7 +28,7 @@ namespace TestClient
             this.token = token;        
         }
    
-
+        
         private void Tests_Load(object sender, EventArgs e)
         {
             tests = new List<TestExam>();
@@ -34,6 +39,9 @@ namespace TestClient
             ShowTests();
             
         }
+        /// <summary>
+        /// розділяє тести на доступні для здачі і на тести які уже здавались
+        /// </summary>
         private void ShowTests()
         {
             panelAvailableTests.Controls.Clear();
@@ -49,12 +57,14 @@ namespace TestClient
                         button.Text = test.BodyTest.Name;
                         button.Size = new Size(639, 25);
                         button.Dock = DockStyle.Top;
+                        button.ForeColor = Color.White;
                         button.Click += buttonPassTest_Click;
                         panelAvailableTests.Controls.Add(button);
                     }
                     else
                     {
                         ListViewItem item = new ListViewItem(test.BodyTest.Name);
+                        item.ForeColor = Color.White;
                         item.SubItems.Add(test.BodyTest.Subject);
                         item.SubItems.Add(test.Result.ToString());
                         listView1.Items.Add(item);
@@ -64,6 +74,7 @@ namespace TestClient
                 }
             }
         }
+       
         private void SetTests()
         {
             List<Answer> answers = new List<Answer>();
@@ -76,6 +87,7 @@ namespace TestClient
             test1.BodyTest.Questions.Add(new Question(answers, "x1="));
             test1.IsAvailable = true;
             test1.BodyTest.Name = "Test1";
+            test1.BodyTest.Subject = "Math";
             tests.Add(test1);
 
 
@@ -84,6 +96,7 @@ namespace TestClient
             test2.BodyTest.Questions.Add(new Question(answers, "аапвап"));
             test2.IsAvailable = true;
             test2.BodyTest.Name = "Test2";
+            test2.BodyTest.Subject = "Math";
             tests.Add(test2);
 
             answers.Add(new Answer() { Text = "ghgh" });
@@ -97,6 +110,10 @@ namespace TestClient
             tests.Add(test3);
 
         }
+
+        /// <summary>
+        /// робить запит до сервера на отримання списку тестів
+        /// </summary>
         private void GetTests()
         {
             RestClient client = new RestClient("http://localhost:5000");
@@ -106,6 +123,7 @@ namespace TestClient
             tests.AddRange(response.Data.ToList());
 
         }
+        
         private void buttonPassTest_Click(object sender, EventArgs e)
         {
             Button testButton = sender as Button;
@@ -127,6 +145,11 @@ namespace TestClient
 
             
         }
+
+        /// <summary>
+        /// відправляє результати пройденого тесту на сервер
+        /// </summary>
+        /// <param name="result"> результат пройденого тесту для відправки </param>
         private void SendTestResult(TestResult result)
         {
             var client = new RestClient("http://localhost:5000");
@@ -136,6 +159,17 @@ namespace TestClient
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(result);
             var response = client.Execute<TestResult>(request);
+        }
+
+        /// <summary>
+        /// робить повторний запит на сервер і оновлює інформацію про тести
+        /// </summary>
+        
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            tests.Clear();
+            GetTests();
+            ShowTests();
         }
     }
 }
