@@ -41,7 +41,7 @@
             this.tabControl_GroupStudents = new System.Windows.Forms.TabControl();
             this.tabPage_GroupStudents = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button_RemoveFromGroup = new System.Windows.Forms.Button();
             this.listBox_GroupStudents = new System.Windows.Forms.ListBox();
             this.tabControl_Groups = new System.Windows.Forms.TabControl();
             this.tabPage_Groups = new System.Windows.Forms.TabPage();
@@ -54,7 +54,7 @@
             this.button_AddGroup = new System.Windows.Forms.Button();
             this.listBox_Groups = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.button_DeleteGoup = new System.Windows.Forms.Button();
+            this.button_DeleteGroup = new System.Windows.Forms.Button();
             this.textBox_GroupName = new System.Windows.Forms.TextBox();
             this.button_SendOnServer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -222,6 +222,7 @@
             this.button_AddToGroup.TabIndex = 2;
             this.button_AddToGroup.Text = "Add to group";
             this.button_AddToGroup.UseVisualStyleBackColor = true;
+            this.button_AddToGroup.Click += new System.EventHandler(this.button_AddToGroup_Click);
             // 
             // listBox_AllStudents
             // 
@@ -234,6 +235,7 @@
             this.tableLayoutPanel6.SetRowSpan(this.listBox_AllStudents, 4);
             this.listBox_AllStudents.Size = new System.Drawing.Size(275, 130);
             this.listBox_AllStudents.TabIndex = 0;
+            this.listBox_AllStudents.SelectedIndexChanged += new System.EventHandler(this.listBox_AllStudents_SelectedIndexChanged);
             // 
             // tabControl_GroupStudents
             // 
@@ -263,7 +265,7 @@
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Controls.Add(this.button4, 0, 4);
+            this.tableLayoutPanel5.Controls.Add(this.button_RemoveFromGroup, 0, 4);
             this.tableLayoutPanel5.Controls.Add(this.listBox_GroupStudents, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
@@ -280,17 +282,18 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(281, 172);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
-            // button4
+            // button_RemoveFromGroup
             // 
-            this.tableLayoutPanel5.SetColumnSpan(this.button4, 2);
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.Location = new System.Drawing.Point(0, 136);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(281, 36);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Remove from group";
-            this.button4.UseVisualStyleBackColor = true;
+            this.tableLayoutPanel5.SetColumnSpan(this.button_RemoveFromGroup, 2);
+            this.button_RemoveFromGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_RemoveFromGroup.Location = new System.Drawing.Point(0, 136);
+            this.button_RemoveFromGroup.Margin = new System.Windows.Forms.Padding(0);
+            this.button_RemoveFromGroup.Name = "button_RemoveFromGroup";
+            this.button_RemoveFromGroup.Size = new System.Drawing.Size(281, 36);
+            this.button_RemoveFromGroup.TabIndex = 1;
+            this.button_RemoveFromGroup.Text = "Remove from group";
+            this.button_RemoveFromGroup.UseVisualStyleBackColor = true;
+            this.button_RemoveFromGroup.Click += new System.EventHandler(this.button_RemoveFromGroup_Click);
             // 
             // listBox_GroupStudents
             // 
@@ -303,6 +306,7 @@
             this.tableLayoutPanel5.SetRowSpan(this.listBox_GroupStudents, 4);
             this.listBox_GroupStudents.Size = new System.Drawing.Size(275, 130);
             this.listBox_GroupStudents.TabIndex = 0;
+            this.listBox_GroupStudents.SelectedIndexChanged += new System.EventHandler(this.listBox_GroupStudents_SelectedIndexChanged);
             // 
             // tabControl_Groups
             // 
@@ -415,6 +419,7 @@
             this.button_ModifyGroup.TabIndex = 1;
             this.button_ModifyGroup.Text = "Modify";
             this.button_ModifyGroup.UseVisualStyleBackColor = true;
+            this.button_ModifyGroup.Click += new System.EventHandler(this.button_ModifyGroup_Click);
             // 
             // button_AddGroup
             // 
@@ -426,6 +431,7 @@
             this.button_AddGroup.TabIndex = 0;
             this.button_AddGroup.Text = "Add";
             this.button_AddGroup.UseVisualStyleBackColor = true;
+            this.button_AddGroup.Click += new System.EventHandler(this.button_AddGroup_Click);
             // 
             // listBox_Groups
             // 
@@ -438,12 +444,13 @@
             this.tableLayoutPanel2.SetRowSpan(this.listBox_Groups, 6);
             this.listBox_Groups.Size = new System.Drawing.Size(273, 276);
             this.listBox_Groups.TabIndex = 0;
+            this.listBox_Groups.SelectedIndexChanged += new System.EventHandler(this.listBox_Groups_SelectedIndexChanged);
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.button_DeleteGoup, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.button_DeleteGroup, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.textBox_GroupName, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 332);
@@ -454,16 +461,17 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(133, 48);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
-            // button_DeleteGoup
+            // button_DeleteGroup
             // 
-            this.button_DeleteGoup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_DeleteGoup.Location = new System.Drawing.Point(0, 24);
-            this.button_DeleteGoup.Margin = new System.Windows.Forms.Padding(0);
-            this.button_DeleteGoup.Name = "button_DeleteGoup";
-            this.button_DeleteGoup.Size = new System.Drawing.Size(133, 24);
-            this.button_DeleteGoup.TabIndex = 3;
-            this.button_DeleteGoup.Text = "Delete";
-            this.button_DeleteGoup.UseVisualStyleBackColor = true;
+            this.button_DeleteGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_DeleteGroup.Location = new System.Drawing.Point(0, 24);
+            this.button_DeleteGroup.Margin = new System.Windows.Forms.Padding(0);
+            this.button_DeleteGroup.Name = "button_DeleteGroup";
+            this.button_DeleteGroup.Size = new System.Drawing.Size(133, 24);
+            this.button_DeleteGroup.TabIndex = 3;
+            this.button_DeleteGroup.Text = "Delete";
+            this.button_DeleteGroup.UseVisualStyleBackColor = true;
+            this.button_DeleteGroup.Click += new System.EventHandler(this.button_DeleteGroup_Click);
             // 
             // textBox_GroupName
             // 
@@ -542,14 +550,14 @@
         private System.Windows.Forms.Button button_AddGroup;
         private System.Windows.Forms.ListBox listBox_Groups;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Button button_DeleteGoup;
+        private System.Windows.Forms.Button button_DeleteGroup;
         private System.Windows.Forms.TextBox textBox_GroupName;
         private System.Windows.Forms.TabControl tabControl_AllStudents;
         private System.Windows.Forms.TabPage tabPage_AllStudents;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.ListBox listBox_AllStudents;
         private System.Windows.Forms.Button button_AddToGroup;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button_RemoveFromGroup;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Button button_Disallow;
         private System.Windows.Forms.Button button_Allow;

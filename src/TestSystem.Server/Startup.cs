@@ -17,6 +17,7 @@ namespace TestSystem.Server
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            //TODO Docker folder
         }
 
         public IConfiguration Configuration { get; }
