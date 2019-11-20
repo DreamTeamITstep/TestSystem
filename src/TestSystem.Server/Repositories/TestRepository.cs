@@ -29,6 +29,9 @@ namespace TestSystem.Server.Repositories
 
         public int Create(Test test)
         {
+            var face = new Test();
+            var faceTest =  JsonConvert.SerializeObject(face);
+
             //TODO Ask about Content
             var idTeacher = _sqlConnection.Query<int>($"SELECT Id FROM Teacher WHERE FullName ='{test.Author}'").First();
             var idSubject = _sqlConnection.Query<int>($"SELECT Id FROM Subject WHERE Name = '{test.Subject}'").First();
@@ -42,10 +45,40 @@ namespace TestSystem.Server.Repositories
         {
             throw new System.NotImplementedException();
         }
-
+        
         public int Delete(int id)
         {
             throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<TestExam> GetExams()
+        {
+            var tests = _sqlConnection.Query<(int Id, string Content, int Result)>("SELECT Id, Content, TestResult as Result FROM Test");
+            foreach (var test in tests)
+            {
+                var result = new TestExam
+                {
+                    Id = test.Id, 
+                    BodyTest = JsonConvert.DeserializeObject<Test>(test.Content.Replace("\\", string.Empty)),
+                    Result = test.Result,
+                    IsAvailable = test.Result == 0
+                };
+                yield return result;
+            }   
+        }
+
+        public void PassExam(TestExam test)
+        {
+            _sqlConnection.Execute(@"
+                UPDATE Test 
+                SET TestResult = @TestResult, 
+                Date = @Now 
+                WHERE Id = @Id", new
+            {
+                Id = test.Id,
+                TestResult = test.Result,
+                Now = DateTime.Now
+            });
         }
     }
 }
