@@ -37,7 +37,7 @@ namespace TestSystem.Server.Repositories
         public Author Update(Author author)
         {
             //TODO What's better WHERE FullName = {author.FullName}" or WHERE Id = {author.id}"
-            var res =_sqlConnection.Query<Author>($"SELECT * FROM Teacher WHERE FullName = '{author.FullName}'");
+            var res =_sqlConnection.Execute($"SELECT * FROM Teacher WHERE FullName = '{author.FullName}'");
             if (res != null)
             {
                 _sqlConnection.Execute(
@@ -50,7 +50,7 @@ namespace TestSystem.Server.Repositories
 
         public int Delete(int id)
         {
-            _sqlConnection.Query<Author>($"DELETE * FROM Teacher WHERE Id = {id}");
+            _sqlConnection.Execute($"DELETE * FROM Teacher WHERE Id = {id}");
             var res = _sqlConnection.Query<Author>($"SELECT * FROM Teacher Where Id ={id}").First();
             return res != null ? 0 : 1;
         }
