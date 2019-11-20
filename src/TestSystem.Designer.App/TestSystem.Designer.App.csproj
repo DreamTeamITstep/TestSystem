@@ -83,6 +83,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TestSystem.Common\TestSystem.Common.csproj">
+      <Project>{0850ff23-3a25-46e2-82fc-2a84dff8ec2e}</Project>
+      <Name>TestSystem.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestSystem.Designer.Library\TestSystem.Designer.Library.csproj">
       <Project>{fcb9ee90-c78d-45c9-ad5f-a65158d31feb}</Project>
       <Name>TestLibrary</Name>

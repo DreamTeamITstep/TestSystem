@@ -22,7 +22,7 @@ namespace TestClient
         private void GetAcces()
         {
             var loginr = new LoginRequest();
-            var client = new RestClient("http://localhost:5000");
+            var client = new RestClient("http://localhost:32225");
             var request = new RestRequest("auth/login", Method.POST);
             request.RequestFormat = DataFormat.Json;
             using (var md5 = MD5.Create())
@@ -44,7 +44,7 @@ namespace TestClient
             }
             catch (Exception)
             {
-                MessageBox.Show("Не вірний логін та пароль");
+                MessageBox.Show("Невірний логін та пароль");
             }
         }
         private string GetMd5Hash(MD5 md5Hash, string input)
@@ -61,6 +61,17 @@ namespace TestClient
                 sBuilder.Append(data[i].ToString("x2"));
             }
             // Return the hexadecimal string.
+            return sBuilder.ToString();
+        }
+
+        static string GetMd5Hash(MD5 md5Hash, string input)
+        {
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+            StringBuilder sBuilder = new StringBuilder();
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
             return sBuilder.ToString();
         }
     }
