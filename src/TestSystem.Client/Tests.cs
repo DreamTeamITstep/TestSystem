@@ -118,7 +118,7 @@ namespace TestClient
             MessageBox.Show(Grade.ToString());
             TestResult testResult = new TestResult() { IdTest = t.Id, Grade = Grade, Date = DateTime.Now };
             //відправити на сервер 
-            SendTestResult(testResult)
+            SendTestResult(testResult);
 
             //оновити вигляд тестів
             var passedTest = tests.Where(x => x.Id == t.Id).FirstOrDefault();
