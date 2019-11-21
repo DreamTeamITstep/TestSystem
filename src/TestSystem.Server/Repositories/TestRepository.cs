@@ -59,7 +59,7 @@ namespace TestSystem.Server.Repositories
                 var result = new TestExam
                 {
                     Id = test.Id, 
-                    BodyTest = JsonConvert.DeserializeObject<Test>(test.Content.Replace("\\", string.Empty)),
+                    BodyTest = JsonConvert.DeserializeObject<Test>(test.Content),
                     Result = test.Result,
                     IsAvailable = test.Result == 0
                 };

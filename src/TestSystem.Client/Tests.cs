@@ -116,9 +116,13 @@ namespace TestClient
             passTest.ShowDialog();
             int Grade = passTest.ResultTest;
             MessageBox.Show(Grade.ToString());
-            TestResult testResult = new TestResult() { IdTest = t.Id, Grade = Grade, Date = DateTime.Now };
+            TestResult testResult = new TestResult() {  IdTest = t.Id, Grade = Grade, Date = DateTime.Now };
             //відправити на сервер 
-            SendTestResult(testResult);
+            SendTestResult(new TestExam
+            {
+                Id = t.Id,
+                Result = Grade
+            });
 
             //оновити вигляд тестів
             var passedTest = tests.Where(x => x.Id == t.Id).FirstOrDefault();
@@ -131,15 +135,15 @@ namespace TestClient
         /// відправляє результати пройденого тесту на сервер
         /// </summary>
         /// <param name="result"> результат пройденого тесту для відправки </param>
-        private void SendTestResult(TestResult result)
+        private void SendTestResult(TestExam result)
         {
             var client = new RestClient("http://localhost:32225");
-            var request = new RestRequest("test", Method.POST);
+            var request = new RestRequest("test/exam", Method.POST);
             request.AddHeader("Authentication", $"Bearer {token}");
             request.AddHeader("Content-Type", "application/json");
             request.RequestFormat = DataFormat.Json;
             request.AddBody(result);
-            var response = client.Execute<TestResult>(request);
+            client.Execute<TestResult>(request);
         }
         /// <summary>
         /// робить повторний запит на сервер і оновлює інформацію про тести
