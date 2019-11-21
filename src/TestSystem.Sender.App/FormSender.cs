@@ -55,8 +55,8 @@ namespace TestSystem.Sender.App
             using (FileStream fs = new FileStream(filePath, FileMode.Open))
             {
                 Test tmp = (Test)formatter.Deserialize(fs);
-                tmp.Author = "Teacher one";
-                tmp.Subject = "programming";
+                //tmp.Author = "Teacher one";
+                //tmp.Subject = "programming";
                 request.AddBody(tmp);
             };
             client.Execute<Test>(request);
